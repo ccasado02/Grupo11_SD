@@ -4,7 +4,7 @@
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
-    background-image: url(n.png);
+    background-image: url(ranita.jpeg);
     background-size: cover;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
@@ -142,4 +142,18 @@ h1 {
     color: #fff; 
     font-size: 20px; 
 
+}
+.container_mood{
+
+}
+.container_mood img{
+    width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    background: none;
+    
+    
+}
+.container_mood a{
+    background: none;
+    
 }

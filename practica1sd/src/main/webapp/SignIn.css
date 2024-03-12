@@ -8,18 +8,8 @@ body {
   
 .logo {
     display: flex;
-    align-self: center; /* Alinea los elementos verticalmente */
-    background: none;
-}
-
-.logo a {
-    display: flex; /* Agrega un contenedor flex para el enlace y la imagen */
-    align-items: center; /* Alinea los elementos verticalmente */
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 20px;
-    background: none;
+    justify-content: center; /* Centra horizontalmente */
+    margin-bottom: 20px; /* Espacio entre el logo y el contenedor */
 }
 
 .logo img {
@@ -29,12 +19,26 @@ body {
 }
 
 
+.back-container {
+  display: flex;
+  align-self: center; /* Alinea los elementos verticalmente */
+  background: none;
+}
+
+
+.back-container img {
+  width: 30px; /* Ajusta el ancho de la imagen según sea necesario */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
+  background: none;
+}
+
+
   .container_SignIn {
+    position: relative;
     width: 100%;
     max-width: 400px;
     margin: auto;
     margin-top: auto;
-    height: 70%;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -97,4 +101,5 @@ body {
     margin-top: 20px;
     color: #ff0000;
   }
-  
+
+
