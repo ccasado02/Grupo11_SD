@@ -46,7 +46,7 @@ body{
 .menu-toggle {
     display: none; /* Ocultar el botón de menú en pantallas grandes */
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1440px) {
     .logo .brand-text{
         display: none;
     }
@@ -162,7 +162,12 @@ body{
 #main.search-container{
     margin-top: 20%;
     background: none;
+    width: 70%;
 
+}
+
+.head .search-button {
+    flex-shrink: 0; /* Evitar que el botón de búsqueda se encoja */
 }
 .search-box {
     padding: 10px 20px;
@@ -170,11 +175,11 @@ body{
     border-radius: 8px 0 0 8px;
     border: #fff;
     color: #000; /* Cambio del color del texto a negro */
-    width: 350px; /* Ancho de la barra de búsqueda aumentado */
-    max-width: 70%; /* Establecer un ancho máximo */
+    width: 45%;
 }
 .head-search{
     margin-left: 5%;
+    width: 40%
 }
 
 .search-button {
@@ -183,6 +188,7 @@ body{
     background: #fff; /* Cambio del color de fondo a blanco */
     color: #000; /* Cambio del color del texto a negro */
     border-radius: 0 8px 8px 0;
+    width: 25%;
 }
 
 .search-button:hover{
@@ -195,18 +201,47 @@ h1 {
     font-size: 20px; 
 
 }
-.container_mood{
-    margin-top: 100%;
-    color:#fff;
+.moods-container {
+    margin-top: 200%;
+    text-align: center; /* Centra el contenido horizontalmente */
 }
-.container_mood img{
-    width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
-    height: auto; /* Permite que la altura se ajuste automáticamente */
-    background: none;
-    
-    
+
+.container_moods,
+.container_mood {
+    display: inline-block; /* Mantiene los elementos en línea */
+    vertical-align: top; /* Alinea los elementos en la parte superior */
 }
-.container_mood a{
+
+h2 {
+    color: #fff;
+    font-size: 24px; /* Ajusta el tamaño del texto según sea necesario */
+    margin-bottom: 20px; /* Añade un espacio entre el h2 y los moods */
+}
+.container_moods {
+    color: #fff;
+    display: flex; /* Agregar flexbox */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en múltiples líneas si no caben en una sola fila */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+}
+.container_moods h2 {
+    margin-bottom: 20px; /* Espacio entre el h2 y los moods */
+    text-align: center;
+}
+.container_mood {
+    display: flex; /* Alinear elementos horizontalmente */
+    flex-direction: column; /* Alinear elementos en columna */
+    align-items: center; /* Centrar elementos verticalmente */
+    margin: 2vw; /* Espacio entre los elementos */
+}
+
+.container_mood img {
+    width: 60px;
+    height: auto;
     background: none;
-    
+}
+
+.container_mood a {
+    background: none;
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    color: inherit; /* Heredar color de texto */
 }
