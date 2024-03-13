@@ -1,0 +1,107 @@
+/* Estilos generales */
+body {
+    margin-top: 5%;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+.logo {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    margin-bottom: 20px; /* Espacio entre el logo y el contenedor */
+}
+
+.logo img {
+    width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    background: none;
+}
+
+
+.back-container {
+  display: flex;
+  align-self: center; /* Alinea los elementos verticalmente */
+  background: none;
+}
+
+
+.back-container img {
+  width: 30px; /* Ajusta el ancho de la imagen según sea necesario */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
+  background: none;
+}
+
+
+  .container_SignIn {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container_SignIn h2 {
+    text-align: center;
+  }
+
+  .container_LogIn {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 70%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container_LogIn h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #6ca254;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #6ca254;
+  }
+  
+  #message {
+    text-align: center;
+    margin-top: 20px;
+    color: #ff0000;
+  }
+
+

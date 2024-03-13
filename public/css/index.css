@@ -1,0 +1,174 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background-size: cover;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+body{
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #000;
+    
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 63px;
+    background: #6ca254;
+    position: fixed;
+    width: 100%;
+    z-index: 100%;
+}
+
+.head .head-search {
+    display: none; /* Oculta la barra de búsqueda en el encabezado por defecto */
+    /* Añade los estilos que quieras para la barra de búsqueda en el encabezado aquí */
+}
+
+.show-search {
+    display: block !important; /* Muestra la barra de búsqueda en el encabezado */
+}
+
+
+.navbar {
+    display: flex;
+    margin-right: 7%;
+    background: none;
+
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente */
+    background: none;
+}
+
+.logo a {
+    display: flex; /* Agrega un contenedor flex para el enlace y la imagen */
+    align-items: center; /* Alinea los elementos verticalmente */
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
+    background: none;
+}
+
+.logo img {
+    width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    background: none;
+}
+
+.navbar a{
+    display: block;
+    padding: 20px 15px;
+    color: #181818;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 17px;;
+    background: none;
+}
+
+.navbar a:hover {
+    background: #6ca254;
+    color:#fff; /* Cambia el color del texto al verde más claro */
+}
+
+/* Agregar estilos para la clase activa */
+.nav-link .active {
+    color: white; 
+}
+
+
+.navbar #CB+ a{
+    margin-left: 20px;
+}
+
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.brand-text {
+    margin-left: 60%;
+    margin-right: 10px; /* Ajusta el espaciado entre el texto y el icono según sea necesario */
+    font-weight: bold; /* Opcional: para hacer el texto más destacado */
+    font-size: 25px; /* Ajusta el tamaño del texto según sea necesario */
+    color: #fff; /* Color del texto */
+    background: none; /* Elimina el fondo */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Alinear los elementos verticalmente */
+    background: none;
+}
+.container h1 {
+    color: white;
+    font-size: 28px;
+    background: none;
+}
+
+#main.search-container{
+    margin-top: 20%;
+    background: none;
+
+}
+.search-box {
+    padding: 10px 20px;
+    background: rgb(41, 41, 41);
+    border-radius: 8px 0 0 8px;
+    border: #fff;
+    color: #000; /* Cambio del color del texto a negro */
+    width: 350px; /* Ancho de la barra de búsqueda aumentado */
+    max-width: 80%; /* Establecer un ancho máximo */
+}
+.head-search{
+    margin-left: 5%;
+}
+
+.search-button {
+    padding: 10px 20px;
+    border: none;
+    background: #fff; /* Cambio del color de fondo a blanco */
+    color: #000; /* Cambio del color del texto a negro */
+    border-radius: 0 8px 8px 0;
+}
+
+.search-button:hover{
+    background: #6ca254;
+    color: white;
+}
+
+h1 {
+    color: #fff; 
+    font-size: 20px; 
+
+}
+.container_mood{
+    margin-top: 100%;
+    color:#fff;
+}
+.container_mood img{
+    width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    background: none;
+    
+    
+}
+.container_mood a{
+    background: none;
+    
+}

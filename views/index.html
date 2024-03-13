@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <script src ="../public/js/search_bar.js"></script>
+    <script src="../public/js/nav_bar.js"></script>
+    <title>FroggyBeats | Compra y vende beats </title>
+</head>
+<body>
+    <div class="head">   
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="#"><img src="../public/img/andresita_la_ranita.png"></a>
+        </div>
+        <div class="search-container head-search">
+            <form action="/buscar" method="get">
+                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+        <nav class="navbar">
+            <a href="index.html" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="vender.html" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="comprar.html" id="CB-link" class="nav-link">Comprar Beats</a>
+            <a href="SignIn.html" id="sign-in-link" class="nav-link">Sign in</a>
+            <a href="LogIn.html" id="log-in-link" class="nav-link">Login</a>
+        </nav>       
+    </div>
+    <div class="container">
+        
+        <div class="search-container" id="main">
+            <h1>Encuentra tu ritmo, crea tu historia</h1>
+            <form action="/buscar" method="get">
+                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <div class="container_mood" id="MOOD">
+        <h2>¿Cual es tu MOOD actual?</h2>
+        <a href="#"><img src="../public/img/feliz-removebg-preview.png"></a><h5>Feliz</h5>
+        <a href="#"><img src="../public/img/triste-removebg-preview.png"></a><h5>Triste</h5>
+        <a href="#"><img src="../public/img/enamorado-removebg-preview.png"></a><h5>Enamorado</h5>
+        <a href="#"><img src="../public/img/enfadado-removebg-preview.png"></a><h5>Enfadado</h5>
+        <a href="#"><img src="../public/img/nose-removebg-preview.png"></a><h5>Energetico</h5>
+        
+    </div>
+</body>
+</html>
