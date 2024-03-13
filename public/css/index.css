@@ -43,6 +43,44 @@ body{
     background: none;
 
 }
+.menu-toggle {
+    display: none; /* Ocultar el botón de menú en pantallas grandes */
+}
+@media only screen and (max-width: 1400px) {
+    .logo .brand-text{
+        display: none;
+    }
+    .menu-toggle {
+        display: block; /* Mostrar el botón de menú en pantallas pequeñas */
+        background: #6ca254;
+    }
+    .menu-toggle img{
+        width: 50px; /* Ajusta el ancho de la imagen según sea necesario */
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+        background: none;
+    }
+
+    .navbar {
+        display: none; /* Ocultar los enlaces de navegación en pantallas pequeñas */
+        flex-direction: column; /* Apilar los enlaces verticalmente */
+        top: 100%; /* Coloca la barra de navegación debajo del botón de toggle */
+        margin-top: 370px;
+        border-radius: 5px;
+        background-color: #6ca254; /* Color de fondo del menú desplegable */ 
+    }
+
+    .navbar a {
+        display: block; /* Mostrar cada enlace en una línea separada */
+        padding: 10px;
+        text-align: center;
+        border:black 1px solid;
+         
+    }
+
+    .navbar.active {
+        display: flex; /* Mostrar los enlaces de navegación cuando el menú está activo */
+    }
+}
 
 .logo {
     display: flex;
@@ -133,7 +171,7 @@ body{
     border: #fff;
     color: #000; /* Cambio del color del texto a negro */
     width: 350px; /* Ancho de la barra de búsqueda aumentado */
-    max-width: 80%; /* Establecer un ancho máximo */
+    max-width: 70%; /* Establecer un ancho máximo */
 }
 .head-search{
     margin-left: 5%;
