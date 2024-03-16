@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/SignIn.css">
+    <title>Sign In</title>
+</head>
+<body>
+      <div class="logo">
+        <a href="#"><img src="img/andresita_la_ranita.png"></a>
+      </div>
+      <div class="container_LogIn" id="loginContainer">
+          <div class="back-container">
+            <a href="index.html"><img src="img/hacia-atras.png"></a>
+          </div>  
+        <h2>Log In</h2>
+        <form id="signinForm" action="/users/create" method="post">
+          <div class="form-group">
+            <label for="Nombre">Nombre:</label>
+            <input type="text" id="nombre" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="Correo Electrónico">Correo Electrónico:</label>
+            <input type="text" id="username" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="submit">Confirm </button>
+        </form>
+        <p id="message"></p>
+      </div>    
+</body>
+</html>
