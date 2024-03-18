@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/nav_bar.js"></script>
+    <script src="js/toggle.js"></script>
+    <title>FroggyBeats | Compra y vende beats </title>
+</head>
+<body>
+    <div class="head">    
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="#"><img src="img/andresita_la_ranita.png"></a>
+        </div>
+        <button class="menu-toggle"><img src="img/menu.png" ></button> 
+        <nav class="navbar">
+            <a href="index.html" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="vender.html" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="comprar.html" id="CB-link" class="nav-link">Comprar Beats</a>
+            <a href="SignIn.html" id="sign-in-link" class="nav-link">Sign in</a>
+            <a href="LogIn.html" id="log-in-link" class="nav-link">Login</a>
+        </nav>       
+    </div>
+    <div class="container">
+        <h2>Reggaeton</h2>
+        <ul>
+            {{#reggaeton}}
+            <li>
+                <p>{{name}}</p>
+                <p>{{description}}</p>
+                <p>{{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/reggaeton}}
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Trap</h2>
+        <ul>
+            {{#trap}}
+            <li>
+                <p>{{name}}</p>
+                <p>{{description}}</p>
+                <p>{{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/trap}}
+        </ul>
+    </div>
+</body>
+</html>
