@@ -27,7 +27,7 @@
         <ul>
             {{#reggaeton}}
             <li>
-                <p>{{name}}</p>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
                 <p>{{description}}</p>
                 <p>{{price}}</p>
                 <div class="youtube-player">
@@ -42,7 +42,7 @@
         <ul>
             {{#trap}}
             <li>
-                <p>{{name}}</p>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
                 <p>{{description}}</p>
                 <p>{{price}}</p>
                 <div class="youtube-player">
@@ -50,6 +50,81 @@
                 </div>
             </li>
             {{/trap}}
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Rap</h2>
+        <ul>
+            {{#rap}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>{{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/rap}}
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Hip-Hop</h2>
+        <ul>
+            {{#hip-hop}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>{{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/hip-hop}}
+        </ul>
+    </div>
+    <div class="container">
+        <h2>R&B</h2>
+        <ul>
+            {{#rb}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>{{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/rb}}
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Pop</h2>
+        <ul>
+            {{#pop}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>{{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/pop}}
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Electónica</h2>
+        <ul>
+            {{#electronica}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>{{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/electronica}}
         </ul>
     </div>
 </body>

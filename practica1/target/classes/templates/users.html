@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    {{#users}}
+    <div>
+        <h2><a href="/usuarios/{{id}}">{{name}}</a></h2>
+        <p>ID: {{id}}</p>
+        <p>Email: {{email}}</p>
+    </div>
+    {{/users}}
+</body>
+</html>

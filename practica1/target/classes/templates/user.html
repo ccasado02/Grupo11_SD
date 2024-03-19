@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+    <h1>Perfil de Usuario</h1>
+    
+    <div>
+        <h2>{{user.name}}</h2>
+        <p>ID: {{user.id}}</p>
+        <p>Email: {{user.email}}</p>
+    </div>
+    <form action="/usuarios/{{user.id}}/del" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="Eliminar Usuario" />
+    </form>
+</body>
+</html>

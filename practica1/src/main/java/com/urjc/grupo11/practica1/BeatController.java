@@ -20,6 +20,7 @@ public class BeatController {
     @Autowired
     UserService users;
 
+    @SuppressWarnings("null")
     @GetMapping("/beats")
     public String getBeats(Model model) {
         for (GENERO genre : GENERO.values()) {
