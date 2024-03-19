@@ -30,13 +30,13 @@ public class LicenseService {
         Beat beat2 = beatService.findById(2L);
 
         if(user1 != null && beat1 != null) {
-            save(new License(user1.getId(), beat1.getId(), LocalDate.of(2023, 12, 12)));
+            save(new License(user1.getId(), beat1.getId(), LocalDate.of(2023, 12, 12), LICENSETYPE.COMMERCIAL));
         }
         if(user2 != null && beat1 != null) {
-            save(new License(user2.getId(), beat1.getId(), LocalDate.of(2024, 2, 20)));
+            save(new License(user2.getId(), beat1.getId(), LocalDate.of(2024, 2, 20), LICENSETYPE.PERSONAL));
         }
         if(user1 != null && beat2 != null) {
-            save(new License(user1.getId(), beat2.getId(), LocalDate.of(2024, 1, 8)));
+            save(new License(user1.getId(), beat2.getId(), LocalDate.of(2024, 1, 8), LICENSETYPE.COMMERCIAL));
         }
     }
     public void save(License license){

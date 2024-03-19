@@ -15,14 +15,16 @@ public class License {
     private Long userId;
     private Long beatId;
     private LocalDate buyDate;
+    private LICENSETYPE licenseType;
 
     public License(){}
 
-    public License(Long userId, Long beatId, LocalDate buyDate){
+    public License(Long userId, Long beatId, LocalDate buyDate, LICENSETYPE licenseType){
         super();
         this.userId=userId;
         this.beatId=beatId;
         this.buyDate=buyDate;
+        this.licenseType=licenseType;
     }
     public Long getId() {
         return this.id;
@@ -54,5 +56,11 @@ public class License {
 
     public void setBuyDate(LocalDate buyDate) {
         this.buyDate = buyDate;
+    }
+    public LICENSETYPE getLicenseType(){
+        return this.licenseType;
+    }
+    public void setLicenseType(LICENSETYPE licenseType){
+        this.licenseType = licenseType;
     }
 }

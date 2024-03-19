@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del Beat</title>
+</head>
+<body>
+    {{#beat}}
+    <h1>{{name}}</h1>
+    <p>Género: {{genre}}</p>
+    <p>Precio: {{price}}</p>
+    <p>Descripción: {{description}}</p>
+    <div class="youtube-player">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    {{/beat}}
+
+    <h2>Usuarios que han comprado este beat:</h2>
+    <ul>
+    {{#users}}
+        <li>
+            <p>Nombre: {{name}}</p>
+            <p>Email: {{email}}</p>
+        </li>
+    {{/users}}
+    </ul>
+</body>
+</html>
