@@ -11,9 +11,15 @@
         <p>ID: {{user.id}}</p>
         <p>Email: {{user.email}}</p>
     </div>
+    {{#isCurrentUser}}
     <form action="/usuarios/{{user.id}}/del" method="post">
         <input type="hidden" name="_method" value="delete" />
         <input type="submit" value="Eliminar Usuario" />
     </form>
+    <a href="/usuarios/{{user.id}}/editname" class="button">Cambiar Nombre de Usuario</a>
+    <form action="/logout" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+    {{/isCurrentUser}}
 </body>
 </html>

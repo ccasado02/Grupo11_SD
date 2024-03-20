@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    private ConcurrentMap<Long, User> users = new ConcurrentHashMap<>();
+     private ConcurrentMap<Long, User> users = new ConcurrentHashMap<>();
     private AtomicLong nextId = new AtomicLong(1);
 
     public UserService(){
@@ -48,5 +48,4 @@ public class UserService {
         }
         return null;
     }
-    
 }
