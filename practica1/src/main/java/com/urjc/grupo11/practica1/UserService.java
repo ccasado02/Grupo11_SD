@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-     private ConcurrentMap<Long, User> users = new ConcurrentHashMap<>();
+    private ConcurrentMap<Long, User> users = new ConcurrentHashMap<>();
     private AtomicLong nextId = new AtomicLong(1);
 
     public UserService(){
@@ -32,4 +32,21 @@ public class UserService {
     public void deleteById(Long id){
         users.remove(id);
     }
+    public User findByName(String username){
+        for (User user : users.values()) {
+            if (user.getName().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+    public User findByEmail(String email){
+        for (User user : users.values()) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
+    
 }
