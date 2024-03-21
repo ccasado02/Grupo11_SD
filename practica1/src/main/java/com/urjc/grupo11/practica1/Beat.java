@@ -1,6 +1,8 @@
     package com.urjc.grupo11.practica1;
 
-    import jakarta.persistence.Entity;
+    import java.util.Set;
+
+import jakarta.persistence.Entity;
     import jakarta.persistence.GeneratedValue;
     import jakarta.persistence.GenerationType;
     import jakarta.persistence.Id;
@@ -15,16 +17,18 @@
         private Double price;
         private String description;
         private String url;
+        private Set<String> tags;
 
         public Beat(){}
 
-        public Beat(String name, GENERO genre, String description, String url, Double price){
+        public Beat(String name, GENERO genre, String description, String url, Double price, Set<String> tags){
             super();
             this.name=name;
             this.genre=genre;
             this.description=description;
             this.url=url;
             this.price=price;
+            this.tags = tags;
         }
         
         public Long getId() {
@@ -73,5 +77,13 @@
 
         public void setPrice(Double price) {
             this.price = price;
+        }
+
+        public Set<String> getTags() {
+            return tags;
+        }
+
+        public void setTags(Set<String> tags) {
+            this.tags = tags;
         }
     }

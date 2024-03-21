@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Beats</title>
+</head>
+<body>
+    <h1>Buscar Beats</h1>
+    
+    <form action="/buscar" method="get">
+        <input type="text" name="q" placeholder="Buscar beats...">
+        <input type="submit" value="Buscar">
+    </form>
+    
+    {{#beats}}
+    <div>
+        <h2>{{name}}</h2>
+        <p>ID: {{id}}</p>
+        <p>Genero: {{genre}}</p>
+        <p>Precio: {{price}}</p>
+        <p>Descripción: {{description}}</p>
+        <p>URL: {{url}}</p>
+    </div>
+    {{/beats}}
+</body>
+</html>
