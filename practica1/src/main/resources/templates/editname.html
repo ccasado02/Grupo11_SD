@@ -8,7 +8,7 @@
     {{#error}}
     <div>{{error}}</div>
     {{/error}}
-    <form action="/usuarios/{{user.id}}/editname/edit" method="post">
+    <form action="/usuarios/{{user.id}}/editname" method="post">
         <label for="newname">Nuevo nombre:</label><br>
         <input type="text" id="newname" name="newname" value="{{user.name}}"><br>
         <input type="submit" value="Cambiar Nombre">

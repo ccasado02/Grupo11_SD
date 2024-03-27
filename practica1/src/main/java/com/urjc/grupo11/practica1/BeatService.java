@@ -14,9 +14,9 @@ public class BeatService {
     private AtomicLong nextId = new AtomicLong(1);
 
     public BeatService(){
-        save(new Beat("TTRRAP 56", GENERO.TRAP, "Beat de trap tipo freestyle", "O0YBgFXqoKk", 15.99, new HashSet<>(Arrays.asList("trap", "trrap56","56", "freestyle", "trap", "enérgico"))));
-        save(new Beat("LOCURAS", GENERO.REGGAETON, "Beat de reggaeton tipo Jhay Cortez", "9YRfoMccgh0", 8.99, new HashSet<>(Arrays.asList("reggaeton","locuras", "jhay", "cortez", "jhayco", "enérgico"))));
-        save(new Beat("TTRRAP 55", GENERO.TRAP, "Beat de trap estilo freestyle", "hmGMUg8JV6-M", 13.99, new HashSet<>(Arrays.asList("trap", "trrap55", "55", "trrap", "freestyle", "enérgico"))));
+        save(new Beat("TTRRAP 56", GENERO.TRAP, "Beat de trap tipo freestyle", "O0YBgFXqoKk", 15.99, new HashSet<>(Arrays.asList("trap", "trrap56","56", "freestyle", "trap", "enérgico")), 3));
+        save(new Beat("LOCURAS", GENERO.REGGAETON, "Beat de reggaeton tipo Jhay Cortez", "9YRfoMccgh0", 8.99, new HashSet<>(Arrays.asList("reggaeton","locuras", "jhay", "cortez", "jhayco", "enérgico")),3));
+        save(new Beat("TTRRAP 55", GENERO.TRAP, "Beat de trap estilo freestyle", "hmGMUg8JV6-M", 13.99, new HashSet<>(Arrays.asList("trap", "trrap55", "55", "trrap", "freestyle", "enérgico")),3));
     }
     public void save(Beat beat){
         if (beat.getId() == null || beat.getId()==0){

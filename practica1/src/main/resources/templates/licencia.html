@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles de la Licencia</title>
+</head>
+<body>
+    <h1>Detalles de la Licencia</h1>
+    
+    <div>
+        <h2>Licencia {{licencia.id}}</h2>
+        <p>Tipo: {{licencia.licenseType}}</p>
+        <p>Beat: {{beat.name}}</p>
+    </div>
+    {{#isCurrentUser}}
+    <form action="/licencias/{{licencia.id}}/edit" method="post">
+        <label for="licenseType">Editar Tipo de Licencia:</label><br>
+        <select id="licenseType" name="licenseType">
+            <option value="PERSONAL">Personal</option>
+            <option value="COMMERCIAL">Comercial</option>
+        </select><br>
+        <input type="submit" value="Editar Licencia" />
+    </form>
+    <form action="/licencias/{{licencia.id}}/del" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="Eliminar Licencia" />
+    </form>
+    {{/isCurrentUser}}
+</body>
+</html>

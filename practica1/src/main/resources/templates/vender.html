@@ -16,12 +16,56 @@
         </div>
         <button class="menu-toggle"><img src="../public/img/menu.png" ></button> 
         <nav class="navbar">
-            <a href="index.html" id="inicio-link" class="nav-link">Inicio</a>
-            <a href="vender.html" id="VB-link" class="nav-link">Vender Beats</a>
-            <a href="comprar.html" id="CB-link" class="nav-link">Comprar Beats</a>
-            <a href="SignIn.html" id="sign-in-link" class="nav-link">Sign in</a>
-            <a href="LogIn.html" id="log-in-link" class="nav-link">Login</a>
-        </nav>       
+            <a href="" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+            {{#user}}
+                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
+            {{/user}}
+            {{^user}}
+                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
+                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            {{/user}}
+        </nav>         
     </div>
+    {{#user}}
+    <form action="/vender" method="post">
+        <label for="beatName">Nombre del Beat:</label><br>
+        <input type="text" id="beatName" name="beatName"><br>
+        <label for="price">Precio:</label><br>
+        <input type="text" id="price" name="price"><br>
+        <label for="description">Descripción:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="url">URL:</label><br>
+        <input type="text" id="url" name="url"><br>
+        <label for="mood">Mood:</label><br>
+        <select id="mood" name="mood">
+            <option value="feliz">Feliz</option>
+            <option value="triste">Triste</option>
+            <option value="enamorado">Enamorado</option>
+            <option value="enfadao">Enfadao</option>
+            <option value="energetico">Energetico</option>
+        </select><br>
+        <label for="genre">Género:</label><br>
+        <select id="genre" name="genre">
+            <option value="pop">POP</option>
+            <option value="trap">TRAP</option>
+            <option value="rap">RAP</option>
+            <option value="hip_hop">HIP_HOP</option>
+            <option value="rb">RB</option>
+            <option value="reggaeton">REGGAETON</option>
+            <option value="electronica">ELECTRONICA</option>
+        </select><br>
+        <label for="tags">Etiquetas (Separadas por un espacio):</label><br>
+        <textarea id="tags" name="tags"></textarea><br>
+        <input type="submit" value="Enviar">
+    </form>
+    {{/user}}
+    {{^user}}
+    <div>
+        <p>Por favor, <a href="/iniciasesion">inicia sesión</a> o <a href="/registrate">regístrate</a> para vender beats.</p>
+    </div>
+    {{/user}}
+
 </body>
 </html>

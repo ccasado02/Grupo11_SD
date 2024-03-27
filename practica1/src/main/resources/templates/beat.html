@@ -23,5 +23,21 @@
         </li>
     {{/users}}
     </ul>
+    {{#user}}
+    <form action="/beats/{{beat.id}}/comprar">
+        <input type="submit" value="Comprar Beat" />
+    </form>
+    {{/user}}
+    {{#isCurrentUser}}
+    <form action="/beat/{{beat.id}}/del" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="Eliminar Beat" />
+    </form>
+    <form action="/beats/{{beat.id}}/editar" method="post">
+        <label for="price">Cambiar Precio:</label><br>
+        <input type="number" id="price" name="price" value="{{beat.price}}"><br>
+        <input type="submit" value="Cambiar Precio">
+    </form>
+    {{/isCurrentUser}}
 </body>
 </html>

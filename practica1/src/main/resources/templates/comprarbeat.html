@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generar Licencia</title>
+</head>
+<body>
+    <h2>Formulario de Licencia</h2>
+    <form action="/beats/{{id}}/comprar" method="post">
+        <label for="licenseType">Tipo de Licencia:</label><br>
+        <select id="licenseType" name="licenseType">
+            <option value="PERSONAL">Personal</option>
+            <option value="COMMERCIAL">Comercial</option>
+        </select><br>
+        <input type="submit" value="Generar Licencia">
+    </form>
+</body>
+</html>

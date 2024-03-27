@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpSession;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 
 @Controller
 public class BeatController {
@@ -101,7 +105,6 @@ public class BeatController {
                 .contains(normalizedTag))
             .collect(Collectors.toList());
     }
-
     @SuppressWarnings("null")
     @GetMapping("/beats")
     public String getBeats(Model model) {
@@ -114,8 +117,9 @@ public class BeatController {
         return "comprar";
     }
     @GetMapping("/beats/{id}")
-    public String getLicensesByBeat(Model model, @PathVariable Long id){
+    public String getLicensesByBeat(Model model, @PathVariable Long id, HttpSession session){
         model.addAttribute("beat", beats.findById(id));
+        User currentUser = (User) session.getAttribute("user");
         List<User> u = new ArrayList<>();;
         List<License> l = licenses.findAll().stream()
             .filter(license -> license.getBeatId() == id)
@@ -123,8 +127,10 @@ public class BeatController {
         for(License li : l){
             u.add(users.findById(li.getUserId()));
         }
+        model.addAttribute("user", (currentUser!= null && currentUser.getId()!=beats.findById(id).getProducerID() && !u.contains(currentUser)));
         model.addAttribute("users", u);
         model.addAttribute("licenses", l);
+        model.addAttribute("isCurrentUser", (currentUser!= null && currentUser.getId()==beats.findById(id).getProducerID()));
         return "beat";
     }
     @GetMapping("/buscar")
@@ -138,4 +144,47 @@ public class BeatController {
         model.addAttribute("beats", returnSet);
         return "buscar";
     }
+
+    @PostMapping("/beat/{id}/del")
+    public String deleteBeat(@PathVariable Long id, HttpSession session){
+        User currentUser = (User) session.getAttribute("user");
+        if(beats.findById(id).getProducerID().equals(currentUser.getId())){
+            beats.deleteById(id);
+            return "redirect:/beats";
+        }else{
+            return "redirect:/";
+        }
+    }
+
+    @GetMapping("/vender")
+    public String showCreateBeatForm(HttpSession session, Model model) {
+        model.addAttribute("user", session.getAttribute("user"));
+        return "vender";
+    }
+
+    @PostMapping("/vender")
+    public String createBeat(@RequestParam String beatName, @RequestParam Double price, @RequestParam String description, @RequestParam String url, @RequestParam(required = false) List<String> mood, @RequestParam(required = false) List<String> genre, @RequestParam String tags, HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        if(currentUser != null){
+            Set<String> tagSet = new HashSet<>(Arrays.asList(tags.split("\\s+")));
+            Beat newBeat = new Beat(beatName, GENERO.valueOf(genre.get(0).toUpperCase()), description, url, price, tagSet, currentUser.getId());
+            beats.save(newBeat);
+        }
+        return "redirect:/beats";
+    }
+
+    @GetMapping("/beats/{id}/editar")
+    public String changePrice(@RequestParam Long id, Model model, HttpSession session) {
+        return "editbeat";
+    }
+
+    @PostMapping("/beats/{id}/editar")
+    public String postMethodName(@RequestParam Double price, @PathVariable Long id) {
+        Beat newBeat = beats.findById(id);
+        newBeat.setPrice(price);
+        beats.save(newBeat);
+        return "redirect:/beats/{id}";
+    }
+    
+    
 }

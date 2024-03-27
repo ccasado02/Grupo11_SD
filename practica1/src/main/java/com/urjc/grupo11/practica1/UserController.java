@@ -47,7 +47,7 @@ public class UserController{
             return "redirect:/";
         }
     }
-    @PostMapping("/usuarios/{id}/editname/edit")
+    @PostMapping("/usuarios/{id}/editname")
     public String updateUserName(@PathVariable Long id, @RequestParam String newname, HttpSession session, RedirectAttributes redirectAttributes){
         if (users.findByName(newname)==null){
         User currentUser = (User) session.getAttribute("user");
@@ -77,9 +77,10 @@ public class UserController{
         return "redirect:/";
     }
 
-    @PostMapping("/usuarios/{id}/del")
-    public String deleteUser(@PathVariable Long id){
+    @PostMapping("/usuarios/{id}")
+    public String deleteUser(@PathVariable Long id, HttpSession session){
         users.deleteById(id);
+        session.invalidate();
         return "redirect:/usuarios";
     }
 
@@ -112,13 +113,24 @@ public class UserController{
     public String signUp(@RequestParam String username, @RequestParam String password, @RequestParam String email, RedirectAttributes redirectAttributes, HttpSession session) {
         User newUser = new User(username, password, email);
         if ((users.findByName(username))!=null || (users.findByEmail(email))!=null) {
-            redirectAttributes.addFlashAttribute("error", "Usuario o email existentes");
-            return "redirect:/registrate";
+            if(users.correctEmailFormat(email)){
+                redirectAttributes.addFlashAttribute("error", "Usuario o email existentes");
+                return "redirect:/registrate";
+            }
+            else{
+                redirectAttributes.addFlashAttribute("error", "Email incorrecto");
+                return "redirect:/registrate";              
+            }
         }
         else{
-            users.save(newUser);
-            session.setAttribute("user", newUser); // Establecer el usuario en la sesión
-            return "redirect:/";
+            if(users.correctEmailFormat(email)){
+                users.save(newUser);
+                session.setAttribute("user", newUser); // Establecer el usuario en la sesión
+                return "redirect:/";
+            } else{
+                redirectAttributes.addFlashAttribute("error", "Email incorrecto");
+                return "redirect:/registrate";          
+            }
         }
     }
   

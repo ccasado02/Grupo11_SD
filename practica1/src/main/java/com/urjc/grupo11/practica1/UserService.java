@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public class UserService {
     public UserService(){
         save(new User("Pepito", "PepitoPerez512", "pepitoperez@gmail.com"));
         save(new User("Juanito", "Juanito8080", "juanito.8080@gmail.com"));
+        save(new User("Tainy", "Tainy1234", "tainyproducer@gmail.com"));
     }
     public void save(User user){
         if (user.getId() == null || user.getId()==0){
@@ -47,5 +49,13 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    public Boolean correctEmailFormat(String email){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 }

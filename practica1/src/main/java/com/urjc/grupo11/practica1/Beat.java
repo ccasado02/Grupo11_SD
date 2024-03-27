@@ -12,6 +12,7 @@ import jakarta.persistence.Entity;
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
+        private Long producerID;
         private String name;
         private GENERO genre;
         private Double price;
@@ -21,7 +22,7 @@ import jakarta.persistence.Entity;
 
         public Beat(){}
 
-        public Beat(String name, GENERO genre, String description, String url, Double price, Set<String> tags){
+        public Beat(String name, GENERO genre, String description, String url, Double price, Set<String> tags, long producerID){
             super();
             this.name=name;
             this.genre=genre;
@@ -29,8 +30,17 @@ import jakarta.persistence.Entity;
             this.url=url;
             this.price=price;
             this.tags = tags;
+            this.producerID = producerID;
         }
         
+        public Long getProducerID() {
+            return this.producerID;
+        }
+
+        public void setProducerID(Long producerID) {
+            this.producerID = producerID;
+        }
+
         public Long getId() {
             return this.id;
         }

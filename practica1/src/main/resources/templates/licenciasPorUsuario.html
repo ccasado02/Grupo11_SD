@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mis Licencias</title>
+</head>
+<body>
+    <h1>Mis Licencias</h1>
+    <ul>
+    {{#licenciasYBeats}}
+        <li>
+            <a href="/licencias/{{licencia.id}}">Licencia {{licencia.id}}:</a> Compró licencia de tipo {{licencia.licenseType}} para el beat {{beat.name}}.
+        </li>
+    {{/licenciasYBeats}}
+    </ul>
+</body>
+</html>
