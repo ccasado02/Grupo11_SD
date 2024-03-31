@@ -59,7 +59,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"No Do Overs\",\r\n    \"genre\": \"RB\",\r\n    \"price\": 10.99,\r\n    \"description\": \"Beat de R&B lleno de pasión\",\r\n    \"url\": \"W4YNTr-qE8w\",\r\n    \"producerID\": \"3\",\r\n    \"tags\": [\r\n        \"rb\",\r\n        \"pasion\",\r\n        \"overs\",\r\n        \"no\",\r\n        \"do\",\r\n        \"enamorado\"\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"No Do Overs\",\r\n    \"genre\": \"RB\",\r\n    \"price\": 10.99,\r\n    \"description\": \"Beat de R&B lleno de pasión\",\r\n    \"url\": \"https://www.youtube.com/watch?v=W4YNTr-qE8w\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,7 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"PORQUE SIN TI\",\r\n    \"genre\": \"POP\",\r\n    \"price\": 12.99,\r\n    \"description\": \"Beat de pop urbano tipo triste\",\r\n    \"url\": \"9g2W9eviPBs\",\r\n    \"producerID\": \"3\",\r\n    \"tags\": [\r\n        \"pop\",\r\n        \"porque\",\r\n        \"sin\",\r\n        \"ti\",\r\n        \"urbano\",\r\n        \"triste\"\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"PORQUE SIN TI\",\r\n    \"genre\": \"POP\",\r\n    \"price\": 12.99,\r\n    \"description\": \"Beat de pop urbano tipo triste\",\r\n    \"url\": \"https://www.youtube.com/watch?v=9g2W9eviPBs\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -107,7 +107,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/beats/4",
+					"raw": "localhost:8080/api/beats/3",
 					"host": [
 						"localhost"
 					],
@@ -115,7 +115,7 @@
 					"path": [
 						"api",
 						"beats",
-						"4"
+						"3"
 					]
 				}
 			},
@@ -388,7 +388,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": 2,\r\n    \"beatId\": 2,\r\n    \"buyDate\": \"2024-02-03\"\r\n}",
+					"raw": "{\r\n    \"userId\": 2,\r\n    \"beatId\": 2,\r\n    \"buyDate\": \"2024-02-03\",\r\n    \"licenseType\": \"PERSONAL\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -423,7 +423,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": 2,\r\n    \"beatId\": 2,\r\n    \"buyDate\": \"2022-02-22\"\r\n}",
+					"raw": "{\r\n    \"userId\": 2,\r\n    \"beatId\": 2,\r\n    \"buyDate\": \"2022-02-22\",\r\n    \"licenseType\": \"PERSONAL\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
