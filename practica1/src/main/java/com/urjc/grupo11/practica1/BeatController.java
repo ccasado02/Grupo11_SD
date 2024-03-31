@@ -105,29 +105,35 @@ public class BeatController {
                 .contains(normalizedTag))
             .collect(Collectors.toList());
     }
-    @SuppressWarnings("null")
     @GetMapping("/beats")
-    public String getBeats(Model model) {
-        for (GENERO genre : GENERO.values()) {
-            List<Beat> beatsByGenre = beats.findAll().stream()
-                    .filter(beat -> beat.getGenre() == genre)
-                    .collect(Collectors.toList());
-            model.addAttribute(genre.name().toLowerCase(), beatsByGenre);
+    public String getBeats(Model model, HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            return "iniciaOregistra"; // Retorna la vista que contiene tu HTML cuando el usuario no está autenticado
+        } else {
+            model.addAttribute("user", currentUser);
+            for (GENERO genre : GENERO.values()) {
+                List<Beat> beatsByGenre = beats.findAll().stream()
+                        .filter(beat -> beat.getGenre() == genre)
+                        .collect(Collectors.toList());
+                model.addAttribute(genre.name().toLowerCase(), beatsByGenre);
+            }
+            return "comprar";
         }
-        return "comprar";
     }
     @GetMapping("/beats/{id}")
     public String getLicensesByBeat(Model model, @PathVariable Long id, HttpSession session){
         model.addAttribute("beat", beats.findById(id));
         User currentUser = (User) session.getAttribute("user");
-        List<User> u = new ArrayList<>();;
+        List<User> u = new ArrayList<>();
         List<License> l = licenses.findAll().stream()
             .filter(license -> license.getBeatId() == id)
             .collect(Collectors.toList());
         for(License li : l){
             u.add(users.findById(li.getUserId()));
         }
-        model.addAttribute("user", (currentUser!= null && currentUser.getId()!=beats.findById(id).getProducerID() && !u.contains(currentUser)));
+        model.addAttribute("user", currentUser);
+        model.addAttribute("usuario", (currentUser!= null && currentUser.getId()!=beats.findById(id).getProducerID() && !u.contains(currentUser)));
         model.addAttribute("users", u);
         model.addAttribute("licenses", l);
         model.addAttribute("isCurrentUser", (currentUser!= null && currentUser.getId()==beats.findById(id).getProducerID()));
@@ -158,8 +164,13 @@ public class BeatController {
 
     @GetMapping("/vender")
     public String showCreateBeatForm(HttpSession session, Model model) {
-        model.addAttribute("user", session.getAttribute("user"));
-        return "vender";
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            return "iniciaOregistra"; // Retorna la vista que contiene tu HTML cuando el usuario no está autenticado
+        } else {
+            model.addAttribute("user", session.getAttribute("user"));
+            return "vender";
+        }
     }
 
     @PostMapping("/vender")

@@ -78,9 +78,6 @@ public class LicenseAPIController {
             if(updateLicense.getBuyDate() != null){
                 license.setBuyDate(updateLicense.getBuyDate());
             }
-            if(updateLicense.getLicenseType() != null){
-                license.setLicenseType(updateLicense.getLicenseType());
-            }
             return ResponseEntity.ok(license);
         }
         else{

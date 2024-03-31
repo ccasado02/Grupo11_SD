@@ -1,0 +1,247 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background-size: cover;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box; 
+
+
+}
+
+body{
+    text-align: left; 
+    background-color: #000;
+    color: #fff;
+    
+}
+
+div {
+    color: #fff; /* Asegura que el texto de los usuarios sea blanco */
+    margin-bottom: 20px; /* Añade un margen en la parte inferior para separar los usuarios */
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 63px;
+    background: #6ca254;
+    position: sticky;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 2%;
+}
+
+.navbar {
+    display: flex;
+    /* margin-right: 7%; */
+    background: none;
+    z-index: 1000;
+}
+.brand-text {
+    margin-left: 60%;
+    margin-right: 10px; /* Ajusta el espaciado entre el texto y el icono según sea necesario */
+    font-weight: bold; /* Opcional: para hacer el texto más destacado */
+    font-size: 25px; /* Ajusta el tamaño del texto según sea necesario */
+    color: #fff; /* Color del texto */
+    background: none; /* Elimina el fondo */
+}
+
+.menu-toggle {
+    display: none; /* Ocultar el botón de menú en pantallas grandes */
+    margin-left: 2%; /* Ajusta el margen izquierdo para que se mantenga en la esquina superior izquierda */
+}
+@media only screen and (max-width: 1440px) {
+    .logo .brand-text{
+        display: none;
+    }
+    
+    .menu-toggle img{
+        width: 50px; /* Ajusta el ancho de la imagen según sea necesario */
+        height: auto; /* Permite que la saltura se ajuste automáticamente */
+        background: none;
+    }
+
+    .navbar {
+        display: none; /* Ocultar los enlaces de navegación en pantallas pequeñas */
+        flex-direction: column-reverse; /* Invierte la dirección de los elementos flexibles */
+        top: 100%; /* Coloca la barra de navegación debajo del botón de toggle */
+        margin-top: 370px;
+        border-radius: 5px;
+        background-color: #6ca254; /* Color de fondo del menú desplegable */ 
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el botón de menú en pantallas pequeñas */
+        background: #6ca254;
+        position: absolute; /* Cambiado de relative a fixed */
+        right: 0; /* Añadido para mover el botón a la derecha */
+        top: 0; /* Añadido para mover el botón a la parte superior */
+        margin-right: 1%; /* Ajusta el margen derecho para que se mantenga en la esquina superior derecha */
+        margin-top: 0.5%;
+    }
+    
+
+    .navbar.active {
+        display: flex; /* Mostrar los enlaces de navegación cuando el menú está activo */
+    }
+}
+
+.logo {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto; /* Ajusta el margen derecho automáticamente */
+    background: none;
+}
+
+.logo a {
+    display: flex; /* Agrega un contenedor flex para el enlace y la imagen */
+    align-items: center; /* Alinea los elementos verticalmente */
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 25px;
+    background: none;
+}
+
+.logo img {
+    width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    background: none;
+}
+
+.navbar a{
+    display: block;
+    padding: 20px 15px;
+    color: #181818;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 17px;;
+    background: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+    background: #6ca254;
+    color:#fff; 
+}
+
+/* Agregar estilos para la clase activa */
+.nav-link .active {
+    color: white; 
+}
+
+
+.navbar #CB+ a{
+    margin-left: 20px;
+}
+
+h1{
+    font-size: 30px;
+    margin-left: 15px;
+    color: #6ca254;
+}
+
+h2{
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+p{
+    margin-left: 15px;
+}
+
+h2 a:hover{
+    color: #6ca254;
+}
+
+.usuarios{
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+/* Style for the form elements */
+form {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+}
+
+/* Style for the input elements */
+input[type="number"] {
+    padding: 10px;
+    background-color: #6ca254;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: -200px;
+    border-radius: 5px;
+}
+
+/* Estilos para los elementos de entrada en hover */
+input[type="number"]:hover {
+    background-color: #4b7a30;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: -750px;
+    border-radius: 5px;
+}
+
+/* Estilos para los elementos de entrada en hover */
+input[type="submit"]:hover {
+    background-color: #4b7a30;
+}
+
+.cambio{
+    margin-top: -20%;
+}
+
+
+/* Estilos para la etiqueta "Nuevo nombre" */
+label {
+    grid-column: 1; /* Establece la columna en la que se va a ubicar la etiqueta */
+    grid-row: 1; /* Establece la fila en la que se va a ubicar la etiqueta */
+    font-size: 20px;
+    margin-top: 7px;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+.youtube-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px; /* Espacio adicional entre los videos */
+}
+
+h1{
+    margin-bottom: 10px;
+}
+
+.youtube-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 800x;
+    height: 400px;
+    display: block;
+    margin: auto; /* Centrar el video horizontalmente */
+    max-width: 900px;
+    max-height: 500px;
+    margin-left: 15px;
+}

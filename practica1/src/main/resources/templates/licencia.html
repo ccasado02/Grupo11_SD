@@ -1,9 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src ="js/search_bar.js"></script>
+    <script src="js/nav_bar.js"></script>
+    <script src="js/toggle.js"></script>
     <title>Detalles de la Licencia</title>
 </head>
 <body>
+    <div class="head">   
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="#"><img src="/img/andresita_la_ranita.png"></a>
+        </div>
+        <div class="search-container head-search">
+            <form action="/buscar" method="get">
+                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+        <button class="menu-toggle"><img src="/img/menu.png" ></button> 
+        <nav class="navbar">
+            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+            {{#user}}
+                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
+            {{/user}}
+            {{^user}}
+                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
+                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            {{/user}}
+        </nav>      
+    </div>
     <h1>Detalles de la Licencia</h1>
     
     <div>

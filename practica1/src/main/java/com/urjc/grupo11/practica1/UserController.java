@@ -1,5 +1,5 @@
 package com.urjc.grupo11.practica1;
-
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,10 @@ public class UserController{
 
     @Autowired
     UserService users;
+    @Autowired
+    BeatService beats;
+    @Autowired
+    LicenseService licenses;
 
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
@@ -77,11 +81,73 @@ public class UserController{
         return "redirect:/";
     }
 
-    @PostMapping("/usuarios/{id}")
-    public String deleteUser(@PathVariable Long id, HttpSession session){
-        users.deleteById(id);
-        session.invalidate();
+
+    
+    @GetMapping("/usuarios/{id}/del")
+    public String deleteUser(@PathVariable Long id, HttpSession session, Model model){
+        User currentUser = (User) session.getAttribute("user");
+        if(currentUser != null && currentUser.getId().equals(id)){
+            users.deleteById(id); 
+            model.addAttribute("usersList", users.getUsers()); 
+            return "transfer";
+        }else{
+            return "redirect:/";
+        }
+    }
+
+    @PostMapping("/usuarios/{id}/transfer")
+    public String transferProperty(@PathVariable Long id, @RequestParam Long newOwnerId, HttpSession session){
+        User currentUser = (User) session.getAttribute("user");
+        if(currentUser != null && currentUser.getId().equals(id)){
+            // Transfer all beats from the deleting user to the selected user
+            beats.transferBeats(id, newOwnerId);
+
+            // Delete all licenses that the selected user has bought from the deleting user
+            List<License> licensesToDelete = licenses.findAll().stream()
+                .filter(license -> license.getUserId().equals(newOwnerId) && beats.findById(license.getBeatId()).getProducerID().equals(id))
+                .collect(Collectors.toList());
+            for (License license : licensesToDelete) {
+                licenses.deleteById(license.getId());
+            }
+
+            // Delete all licenses of the beats that were owned by the deleting user
+            List<License> licensesOfDeletedUser = licenses.findAll().stream()
+                .filter(license -> beats.findById(license.getBeatId()).getProducerID().equals(id))
+                .collect(Collectors.toList());
+            for (License license : licensesOfDeletedUser) {
+                licenses.deleteById(license.getId());
+            }
+            logout(session);
+            users.deleteById(id);
+        }
         return "redirect:/usuarios";
+    }
+
+    @PostMapping("/usuarios/{id}/borrar")
+    public String deleteProperty(@PathVariable Long id, HttpSession session){
+        User currentUser = (User) session.getAttribute("user");
+        if(currentUser != null && currentUser.getId().equals(id)){
+            // Encuentra y elimina todas las licencias de los beats producidos por el usuario actual
+            List<License> licensesToDelete = licenses.findAll().stream()
+                .filter(license -> beats.findById(license.getBeatId()).getProducerID().equals(id))
+                .collect(Collectors.toList());
+            for (License license : licensesToDelete) {
+                licenses.deleteById(license.getId());
+            }
+
+            // Encuentra y elimina todos los beats del usuario actual
+            List<Beat> beatsToDelete = beats.findAll().stream()
+                .filter(beat -> beat.getProducerID().equals(id))
+                .collect(Collectors.toList());
+            for (Beat beat : beatsToDelete) {
+                beats.deleteById(beat.getId());
+            }
+
+            // Cierra la sesión y elimina al usuario
+            logout(session);
+            users.deleteById(id);
+        }
+        return "redirect:/";  // Redirige a la página de inicio
     }
 
     @GetMapping("/iniciasesion")
@@ -133,5 +199,5 @@ public class UserController{
             }
         }
     }
-  
+    
 }

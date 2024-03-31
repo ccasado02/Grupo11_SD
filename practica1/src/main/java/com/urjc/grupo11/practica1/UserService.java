@@ -1,5 +1,4 @@
 package com.urjc.grupo11.practica1;
-
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -57,5 +56,9 @@ public class UserService {
         if (email == null)
             return false;
         return pat.matcher(email).matches();
+    }
+
+    public Collection<User> getUsers(){
+        return (users.values());
     }
 }

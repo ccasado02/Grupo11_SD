@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <script src ="js/search_bar.js"></script>
     <script src="js/nav_bar.js"></script>
     <script src="js/toggle.js"></script>
-    <title>Generar Licencia</title>
+    <title>FroggyBeats | Compra y vende beats </title>
 </head>
 <body>
     <div class="head">   
@@ -35,23 +34,12 @@
             {{/user}}
         </nav>      
     </div>
-    <div class="container">
-        <div class="search-container" id="main">
-            <h1>Encuentra tu ritmo, crea tu historia</h1>
-            <form action="/buscar" method="get">
-                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
-                <button type="submit" class="search-button">Buscar</button>
-            </form>
+    <div class="log">
+        <h3>Para vender o comprar beats necesitas tener una cuenta</h3>
+        <div class="button-container">
+            <a href="/iniciasesion" id="sign-in-link" class="nav-link button">Sign in</a>
+            <a href="/registrate" id="signup-in-link" class="nav-link button">Sign Up</a>
         </div>
     </div>
-    <h2>Formulario de Licencia</h2>
-    <form action="/beats/{{id}}/comprar" method="post">
-        <label for="licenseType">Tipo de Licencia:</label><br>
-        <select id="licenseType" name="licenseType">
-            <option value="PERSONAL">Personal</option>
-            <option value="COMMERCIAL">Comercial</option>
-        </select><br>
-        <input type="submit" value="Generar Licencia">
-    </form>
 </body>
 </html>

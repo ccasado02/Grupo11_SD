@@ -81,15 +81,6 @@ public class BeatAPIController {
             if(updatedBeat.getUrl() != null){
                 beat.setUrl(updatedBeat.getUrl());
             }
-            if(updatedBeat.getPrice() != null){
-                beat.setPrice(updatedBeat.getPrice());
-            }
-            if(updatedBeat.getTags() != null){
-                beat.setTags(updatedBeat.getTags());
-            }
-            if(updatedBeat.getProducerID()!= null){
-                beat.setProducerID(updatedBeat.getProducerID());;
-            }
             beats.save(beat);
             return ResponseEntity.ok(beat);
         } else {

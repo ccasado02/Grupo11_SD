@@ -1,0 +1,261 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background-size: cover;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box; 
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #000;
+    color: #fff; 
+    text-align: center;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    background: #6ca254;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    background: none;
+    z-index: 1000;
+    margin-right: 30px;
+}
+
+.menu-toggle {
+    display: none; /* Ocultar el botón de menú en pantallas grandes */
+    margin-left: 2%; /* Ajusta el margen izquierdo para que se mantenga en la esquina superior izquierda */
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Ajusta el margen derecho automáticamente */
+    background: none;
+}
+
+.logo a {
+    display: flex; /* Agrega un contenedor flex para el enlace y la imagen */
+    align-items: center; /* Alinea los elementos verticalmente */
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
+    background: none;
+    margin-left: 15px;
+}
+
+.logo img {
+    width: 50px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    background: none;
+}
+
+.navbar a{
+    display: block;
+    padding: 20px 15px;
+    color: #181818;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 17px;
+    background: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.brand-text {
+    margin-left: 60%;
+    margin-right: 10px; /* Ajusta el espaciado entre el texto y el icono según sea necesario */
+    font-weight: bold; /* Opcional: para hacer el texto más destacado */
+    font-size: 25px; /* Ajusta el tamaño del texto según sea necesario */
+    color: #fff; /* Color del texto */
+    background: none; /* Elimina el fondo */
+}
+.navbar a:hover {
+    background: #6ca254;
+    color:#fff; 
+}
+
+.nav-link .active {
+    color: white; 
+}
+
+.navbar #CB+ a{
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .logo .brand-text{
+        display: none;
+    }
+    
+    .menu-toggle img{
+        width: 50px; /* Ajusta el ancho de la imagen según sea necesario */
+        height: auto; /* Permite que la saltura se ajuste automáticamente */
+        background: none;
+    }
+
+    .navbar {
+        display: none; /* Ocultar los enlaces de navegación en pantallas pequeñas */
+        flex-direction: column-reverse; /* Invierte la dirección de los elementos flexibles */
+        top: 100%; /* Coloca la barra de navegación debajo del botón de toggle */
+        margin-top: 370px;
+        border-radius: 5px;
+        background-color: none; /* Cambiado a fondo transparente */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el botón de menú en pantallas pequeñas */
+        background: #6ca254;
+        position: absolute; /* Cambiado de relative a fixed */
+        right: 0; /* Añadido para mover el botón a la derecha */
+        top: 0; /* Añadido para mover el botón a la parte superior */
+        margin-right: 1%; /* Ajusta el margen derecho para que se mantenga en la esquina superior derecha */
+        margin-top: 0.5%;
+    }
+    
+    .navbar.active {
+        display: flex; /* Mostrar los enlaces de navegación cuando el menú está activo */
+    }
+
+    .logo img {
+        width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+        background: none;
+    }
+}
+
+
+h2 {
+    font-size: 24px;
+    color: #333; /* Set your desired heading color */;
+}
+
+ul {
+    list-style: none;
+    padding: 100px;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+.youtube-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px; /* Espacio adicional entre los videos */
+}
+
+.youtube-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto; /* Centrar el video horizontalmente */
+    max-width: 900px;
+    max-height: 500px;
+}
+
+.index {
+    position: fixed;
+    top: 53px; /* Ajusta según la altura del navbar */
+    width: 100%;
+    padding: 15px 0;
+    background-color: #2c412a;
+    color: #fff;
+    text-align: center;
+    z-index: 1000;
+}
+
+
+.index ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.index li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.index a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.index a:hover {
+    background-color: #6ca254;
+    border-radius: 5px;
+}
+
+.container .h2class {
+    text-align: center;
+    font-size: 50px;
+    color: #fff;
+}
+
+.container a {
+    font-size: 22px; 
+    color: #6ca254; 
+    text-decoration: none; 
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    margin-top: 200px;
+    display: flex; /* Añade flex para que los elementos se alineen en una fila */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en la siguiente línea si no hay suficiente espacio */
+    justify-content: space-between; /* Distribuye el espacio de manera uniforme entre los elementos */
+}
+
+.container h2 {
+    width: 100%; /* Asegura que el título ocupe todo el ancho del contenedor */
+    text-align: center; /* Centra el texto del título */
+}
+
+.container ul {
+    display: flex; /* Añade flex para que los elementos de la lista se alineen en una fila */
+    flex-wrap: wrap; /* Permite que los elementos de la lista se envuelvan en la siguiente línea si no hay suficiente espacio */
+    justify-content: space-between; /* Distribuye el espacio de manera uniforme entre los elementos de la lista */
+}
+
+.container ul li {
+    width: calc(50% - 10px); /* Asegura que cada elemento de la lista ocupe el 50% del ancho del contenedor, restando 10px para tener en cuenta los márgenes */
+}
+
+
+/* Ajustes para mostrar los beats de 2 en 2 en pantallas grandes */
+@media only screen and (min-width: 1441px) {
+    .container {
+        width: calc(50% - 30px); /* Ancho del 50% con margen adicional */
+        margin-right: 30px; /* Espacio entre cada par de contenedores */
+    }
+}

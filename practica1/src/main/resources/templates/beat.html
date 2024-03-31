@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/beat.css">
+    <script src ="/js/search_bar.js"></script>
+    <script src="/js/nav_bar.js"></script>
+    <script src="/js/toggle.js"></script>
     <title>Detalles del Beat</title>
 </head>
 <body>
+    <div class="head">    
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="#"><img src="/img/andresita_la_ranita.png"></a>
+        </div>
+        <button class="menu-toggle"><img src="/img/menu.png" ></button> 
+        <nav class="navbar">
+            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+            {{#user}}
+                <a href="/usuarios/{{id}}" class="nav-link">{{user.name}}</a>
+            {{/user}}
+            {{^user}}
+                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
+                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            {{/user}}
+        </nav>            
+    </div>
     {{#beat}}
     <h1>{{name}}</h1>
     <p>Género: {{genre}}</p>
@@ -23,17 +48,17 @@
         </li>
     {{/users}}
     </ul>
-    {{#user}}
+    {{#usuario}}
     <form action="/beats/{{beat.id}}/comprar">
         <input type="submit" value="Comprar Beat" />
     </form>
-    {{/user}}
+    {{/usuario}}
     {{#isCurrentUser}}
     <form action="/beat/{{beat.id}}/del" method="post">
         <input type="hidden" name="_method" value="delete" />
         <input type="submit" value="Eliminar Beat" />
     </form>
-    <form action="/beats/{{beat.id}}/editar" method="post">
+    <form action="/beats/{{beat.id}}/editar" method="post" class="cambio">
         <label for="price">Cambiar Precio:</label><br>
         <input type="number" id="price" name="price" value="{{beat.price}}"><br>
         <input type="submit" value="Cambiar Precio">
