@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/vender.css">
+    <script src ="js/search_bar.js"></script>
+    <script src="js/nav_bar.js"></script>
+    <script src="js/toggle.js"></script>
+    <title>Comienza a vender tus beats </title>
+</head>
+<body>
+    <div class="head">   
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="/"><img src="img/andresita_la_ranita.png"></a>
+        </div>
+        <button class="menu-toggle"><img src="img/menu.png" ></button> 
+        <nav class="navbar">
+            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+            {{#user}}
+                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
+            {{/user}}
+            {{^user}}
+                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
+                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            {{/user}}
+        </nav>
+    </div>
+    <div class="form-container">
+        <h2>VENDE TU BEAT</h2>
+        <form action="/vender" method="post">
+            <label for="beatName">Nombre del Beat:</label><br>
+            <input type="text" id="beatName" name="beatName"><br>
+            <label for="price">Precio:</label><br>
+            <input type="text" id="price" name="price"><br>
+            <label for="beatURL">URL:</label><br>
+            <input type="text" id="beatURL" name="url"><br>
+            <label for="description">Descripción:</label><br>
+            <textarea id="description" name="description"></textarea><br>
+            <label for="mood">Mood:</label><br>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="Feliz" name="mood" value="feliz">
+                    Feliz
+                </label>
+                <label>
+                    <input type="checkbox" id="triste" name="mood" value="triste">
+                    Triste
+                </label>
+                <label>
+                    <input type="checkbox" id="enamorado" name="mood" value="enamorado">
+                    Enamorado
+                </label>
+                <label>
+                    <input type="checkbox" id="enfadao" name="mood" value="enfadao">
+                    Enfadao
+                </label>
+                <label>
+                    <input type="checkbox" id="energetico" name="mood" value="energetico">
+                    Energetico
+                </label>
+            </div>
+            <label for="genre">Género:</label><br>
+            <div class="checkbox-group">
+            <select id="genre" name="genre">
+                <option value="pop">POP</option>
+                <option value="trap">TRAP</option>
+                <option value="rap">RAP</option>
+                <option value="rb">RB</option>
+                <option value="reggaeton">REGGAETON</option>
+                <option value="electronica">ELECTRONICA</option>
+            </select><br>
+            </div>
+            <label for="tags">Etiquetas:</label><br>
+            <textarea id="tags" name="tags"></textarea><br>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    
+</body>
+</html>

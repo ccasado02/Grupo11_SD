@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/comprar.css">
+    <script src ="js/search_bar.js"></script>
+    <script src="js/nav_bar.js"></script>
+    <script src="js/toggle.js"></script>
+    <title>FroggyBeats | Compra y vende beats </title>
+</head>
+<body>
+    <div class="head">    
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="/"><img src="img/andresita_la_ranita.png"></a>
+        </div>
+        <div class="search-container head-search">
+            <form action="/buscar" method="get">
+                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+        <button class="menu-toggle"><img src="img/menu.png" ></button> 
+        <nav class="navbar">
+            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+            {{#user}}
+                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
+            {{/user}}
+            {{^user}}
+                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
+                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            {{/user}}
+        </nav> 
+        <div class="index">
+            <ul>
+                <li><a href="#reggaeton-section">REGGAETON</a></li>
+                <li><a href="#trap-section">TRAP</a></li>
+                <li><a href="#rap-section">RAP</a></li>
+                <li><a href="#rb-section">R&B</a></li>
+                <li><a href="#pop-section">POP</a></li>
+                <li><a href="#electronica-section">ELECTRONICA</a></li>
+            </ul>
+        </div>        
+    </div>
+    
+    
+    <div class="container" id="reggaeton-section">
+        <h2 class="h2class">REGGAETON</h2>
+        <ul>
+            {{#reggaeton}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>Precio: {{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/reggaeton}}
+        </ul>
+    </div>
+    
+    <div class="container" id="trap-section">
+        <h2 class="h2class">TRAP</h2>
+        <ul>
+            {{#trap}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>Precio: {{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/trap}}
+        </ul>
+    </div>
+    <div class="container" id="rap-section">
+        <h2 class="h2class">RAP</h2>
+        <ul>
+            {{#rap}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>Precio: {{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/rap}}
+        </ul>
+    </div>
+    <div class="container" id="rb-section">
+        <h2 class="h2class">R&B</h2>
+        <ul>
+            {{#rb}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>Precio: {{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/rb}}
+        </ul>
+    </div>
+    <div class="container" id="pop-section">
+        <h2 class="h2class">POP</h2>
+        <ul>
+            {{#pop}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>Precio: {{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/pop}}
+        </ul>
+    </div>
+    <div class="container" id="electronica-section">
+        <h2 class="h2class">ELECTRONICA</h2>
+        <ul>
+            {{#electronica}}
+            <li>
+                <p><a href="/beats/{{id}}">{{name}}</a></p>
+                <p>{{description}}</p>
+                <p>Precio: {{price}}</p>
+                <div class="youtube-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            {{/electronica}}
+        </ul>
+    </div>
+</body>
+</html>
