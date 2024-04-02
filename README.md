@@ -66,7 +66,7 @@ Para facilitar las pruebas con la página, se han creado una buena base de 24 be
 >
 >Contraseñas: Juanito8080  PepitoPerez512  Tainy1234
 
-Se facilita aquí el lin al repositorio de github para que se pueda comprobar su uso: https://github.com/ccasado02/Grupo11_SD/
+Se facilita aquí el link al repositorio de github para que se pueda comprobar su uso: https://github.com/ccasado02/Grupo11_SD/
 
 
     
