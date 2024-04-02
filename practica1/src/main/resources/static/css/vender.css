@@ -10,15 +10,14 @@ body{
 
 .navbar {
     display: flex;
-    /* margin-right: 7%; */
     background: none;
     z-index: 1000;
     margin-right: 30px;
 }
 
 .menu-toggle {
-    display: none; /* Ocultar el botón de menú en pantallas grandes */
-    margin-left: 2%; /* Ajusta el margen izquierdo para que se mantenga en la esquina superior izquierda */
+    display: none; 
+    margin-left: 2%; 
 }
 @media only screen and (max-width: 1440px) {
     .logo .brand-text{
@@ -26,44 +25,44 @@ body{
     }
     
     .menu-toggle img{
-        width: 50px; /* Ajusta el ancho de la imagen según sea necesario */
-        height: auto; /* Permite que la saltura se ajuste automáticamente */
+        width: 50px; 
+        height: auto; 
         background: none;
     }
 
     .navbar {
-        display: none; /* Ocultar los enlaces de navegación en pantallas pequeñas */
-        flex-direction: column-reverse; /* Invierte la dirección de los elementos flexibles */
+        display: none; 
+        flex-direction: column-reverse; 
         border-radius: 5px;
-        background-color: #6ca254; /* Color de fondo del menú desplegable */ 
+        background-color: #6ca254; 
     }
 
     .menu-toggle {
-        display: block; /* Mostrar el botón de menú en pantallas pequeñas */
+        display: block; 
         background: #6ca254;
-        position: absolute; /* Cambiado de relative a fixed */
-        right: 0; /* Añadido para mover el botón a la derecha */
-        top: 0; /* Añadido para mover el botón a la parte superior */
-        margin-right: 1%; /* Ajusta el margen derecho para que se mantenga en la esquina superior derecha */
+        position: absolute; 
+        right: 0; 
+        top: 0; 
+        margin-right: 1%; 
         margin-top: 0.5%;
     }
     
 
     .navbar.active {
-        display: flex; /* Mostrar los enlaces de navegación cuando el menú está activo */
+        display: flex; 
     }
 }
 
 .logo {
     display: flex;
     align-items: center;
-    margin-right: auto; /* Ajusta el margen derecho automáticamente */
+    margin-right: auto; 
     background: none;
 }
 
 .logo a {
-    display: flex; /* Agrega un contenedor flex para el enlace y la imagen */
-    align-items: center; /* Alinea los elementos verticalmente */
+    display: flex; 
+    align-items: center; 
     text-decoration: none;
     color: #fff;
     text-transform: uppercase;
@@ -72,8 +71,8 @@ body{
 }
 
 .logo img {
-    width: 60px; /* Ajusta el ancho de la imagen según sea necesario */
-    height: auto; /* Permite que la altura se ajuste automáticamente */
+    width: 60px; 
+    height: auto; 
     background: none;
 }
 
@@ -93,7 +92,7 @@ body{
     color:#fff; 
 }
 
-/* Agregar estilos para la clase activa */
+
 .nav-link .active {
     color: white; 
 }
@@ -166,13 +165,13 @@ input[type="submit"]:hover {
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s; /* Añade una transición suave para el cambio de color */
+    transition: background-color 0.3s; 
 }
 
 
 .checkbox-group input[type="checkbox"]:checked + label {
-    background-color: #6ca254; /* Cambia a tu color verde deseado */
-    color: white; /* Cambia el color del texto a blanco para mejor contraste */
+    background-color: #6ca254; 
+    color: white; 
 }
 .h2{
     font-size: 50px;
@@ -190,4 +189,13 @@ input[type="submit"]:hover {
     z-index: 1000;
     margin-top: none;
     border-top: none;
+}
+
+#genre{
+    margin-left: 170px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: rgb(231, 231, 231);
+    border-color: #000;
 }

@@ -17,15 +17,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+// RestController annotation
 @RestController
+// RequestMapping for the base path
 @RequestMapping("/api/licenses")
 public class LicenseAPIController {
+    // Autowired LicenseService
     @Autowired
     private LicenseService licenses;
+    
+    // GetMapping for retrieving all licenses
     @GetMapping("/")
     public Collection<License> getLicenses(){
         return licenses.findAll();
     }
+    
+    // GetMapping for retrieving a license by ID
     @GetMapping("/{id}")
     public ResponseEntity<License> getLicense(@PathVariable Long id){
         License license = licenses.findById(id);
@@ -36,12 +43,16 @@ public class LicenseAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    // PostMapping for creating a new license
     @PostMapping("/") 
     public ResponseEntity<License> createLicense(@RequestBody License license){
         licenses.save(license);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(license.getId()).toUri();
         return ResponseEntity.created(location).body(license);
     }
+    
+    // DeleteMapping for deleting a license by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<License> deleteLicense(@PathVariable Long id){
         License license = licenses.findById(id);
@@ -53,6 +64,8 @@ public class LicenseAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    // PutMapping for replacing a license with a new one
     @PutMapping("/{id}")
     public ResponseEntity<License> replaceLicense(@PathVariable Long id, @RequestBody License newLicense){
         License license = licenses.findById(id);
@@ -65,6 +78,8 @@ public class LicenseAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    // PatchMapping for updating a license
     @PatchMapping("/{id}")
     public ResponseEntity<License> updateLicense(@PathVariable Long id, @RequestBody License updateLicense){
         License license = licenses.findById(id);
@@ -77,6 +92,9 @@ public class LicenseAPIController {
             }
             if(updateLicense.getBuyDate() != null){
                 license.setBuyDate(updateLicense.getBuyDate());
+            }
+            if(updateLicense.getLicenseType() != null){
+                license.setLicenseType(updateLicense.getLicenseType());
             }
             return ResponseEntity.ok(license);
         }

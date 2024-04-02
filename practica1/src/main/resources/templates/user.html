@@ -12,7 +12,7 @@
     <div class="head">   
         <div class="logo">
             <span class="brand-text">FroggyBeats</span>
-            <a href="#"><img src="/img/andresita_la_ranita.png"></a>
+            <a href="/"><img src="/img/andresita_la_ranita.png"></a>
         </div>
         <button class="menu-toggle"><img src="/img/menu.png" ></button> 
         <nav class="navbar">
@@ -30,9 +30,9 @@
     </div>
     <h1>Perfil de Usuario</h1>
     <div>
-        <h2>{{user.name}}</h2>
-        <p>ID: {{user.id}}</p>
-        <p>Email: {{user.email}}</p>
+        <h2>{{usuario.name}}</h2>
+        <p>ID: {{usuario.id}}</p>
+        <p>Email: {{usuario.email}}</p>
     </div>
     {{#isCurrentUser}}
     <form action="/usuarios/{{user.id}}/del" method="get">

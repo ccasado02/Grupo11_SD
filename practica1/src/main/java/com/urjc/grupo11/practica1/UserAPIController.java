@@ -17,15 +17,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+// REST controller for managing users
 @RestController
 @RequestMapping("/api/users")
 public class UserAPIController {
     @Autowired
     private UserService users;
+
+    // Method to get all users
     @GetMapping("/")
     public Collection<User> getUsers(){
         return users.findAll();
     }
+
+    // Method to get a user by ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id){
         User user = users.findById(id);
@@ -36,12 +41,16 @@ public class UserAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Method to create a user
     @PostMapping("/") 
     public ResponseEntity<User> createUser(@RequestBody User user){
         users.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(location).body(user);
     }
+
+    // Method to delete a user by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable Long id){
         User user = users.findById(id);
@@ -53,6 +62,8 @@ public class UserAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Method to replace a user by ID
     @PutMapping("/{id}")
     public ResponseEntity<User> replaceUser(@PathVariable Long id, @RequestBody User newuser){
         User user = users.findById(id);
@@ -65,6 +76,8 @@ public class UserAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Method to update a user by ID
     @PatchMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updateUser){
         User user = users.findById(id);

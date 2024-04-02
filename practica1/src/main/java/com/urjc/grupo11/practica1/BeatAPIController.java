@@ -20,12 +20,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/beats")
 public class BeatAPIController {
+    // Autowired BeatService to handle Beat operations
     @Autowired
     private BeatService beats;
+
+    // Get all Beats
     @GetMapping("/")
     public Collection<Beat> getBeats(){
         return beats.findAll();
     }
+
+    // Get a specific Beat by ID
     @GetMapping("/{id}")
     public ResponseEntity<Beat> getBeat(@PathVariable Long id){
         Beat beat = beats.findById(id);
@@ -36,12 +41,16 @@ public class BeatAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Create a new Beat
     @PostMapping("/") 
     public ResponseEntity<Beat> createBeat(@RequestBody Beat beat){
         beats.save(beat);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(beat.getId()).toUri();
         return ResponseEntity.created(location).body(beat);
     }
+
+    // Delete a Beat by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Beat> deleteBeat(@PathVariable Long id){
         Beat beat = beats.findById(id);
@@ -53,6 +62,8 @@ public class BeatAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Replace a Beat with a new one
     @PutMapping("/{id}")
     public ResponseEntity<Beat> replaceBeat(@PathVariable Long id, @RequestBody Beat newBeat){
         Beat beat = beats.findById(id);
@@ -65,6 +76,8 @@ public class BeatAPIController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Update a Beat with new information
     @PatchMapping("/{id}")
     public ResponseEntity<Beat> updateBeat(@PathVariable Long id, @RequestBody Beat updatedBeat){
         Beat beat = beats.findById(id);
@@ -80,6 +93,15 @@ public class BeatAPIController {
             }
             if(updatedBeat.getUrl() != null){
                 beat.setUrl(updatedBeat.getUrl());
+            }
+            if(updatedBeat.getPrice() != null){
+                beat.setPrice(updatedBeat.getPrice());
+            }
+            if(updatedBeat.getTags() != null){
+                beat.setTags(updatedBeat.getTags());
+            }
+            if(updatedBeat.getProducerID()!= null){
+                beat.setProducerID(updatedBeat.getProducerID());;
             }
             beats.save(beat);
             return ResponseEntity.ok(beat);

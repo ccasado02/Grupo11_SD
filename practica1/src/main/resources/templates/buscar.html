@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <script src ="js/search_bar.js"></script>
-    <script src="js/nav_bar.js"></script>
-    <script src="js/toggle.js"></script>
+    <link rel="stylesheet" href="/css/beat.css">
+    <script src ="/js/search_bar.js"></script>
+    <script src="/js/nav_bar.js"></script>
+    <script src="/js/toggle.js"></script>
     <title>Buscar Beats</title>
 </head>
 <body>
     <div class="head">   
         <div class="logo">
             <span class="brand-text">FroggyBeats</span>
-            <a href="#"><img src="img/andresita_la_ranita.png"></a>
+            <a href="/"><img src="/img/andresita_la_ranita.png"></a>
         </div>
         <div class="search-container head-search">
             <form action="/buscar" method="get">
@@ -21,7 +21,7 @@
                 <button type="submit" class="search-button">Buscar</button>
             </form>
         </div>
-        <button class="menu-toggle"><img src="img/menu.png" ></button> 
+        <button class="menu-toggle"><img src="/img/menu.png" ></button> 
         <nav class="navbar">
             <a href="/" id="inicio-link" class="nav-link">Inicio</a>
             <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
@@ -35,18 +35,9 @@
             {{/user}}
         </nav>      
     </div>
-    <div class="container">
-        <div class="search-container" id="main">
-            <h1>Encuentra tu ritmo, crea tu historia</h1>
-            <form action="/buscar" method="get">
-                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
-                <button type="submit" class="search-button">Buscar</button>
-            </form>
-        </div>
-    </div>
     {{#beats}}
     <div>
-        <p><a href="/beats/{{id}}">{{name}}</a></p>
+        <p id="cancion"><a href="/beats/{{id}}">{{name}}</a></p>
         <p>ID: {{id}}</p>
         <p>Genero: {{genre}}</p>
         <p>Precio: {{price}}</p>

@@ -13,7 +13,7 @@
     <div class="head">    
         <div class="logo">
             <span class="brand-text">FroggyBeats</span>
-            <a href="#"><img src="/img/andresita_la_ranita.png"></a>
+            <a href="/"><img src="/img/andresita_la_ranita.png"></a>
         </div>
         <button class="menu-toggle"><img src="/img/menu.png" ></button> 
         <nav class="navbar">
@@ -33,13 +33,24 @@
     <h1>{{name}}</h1>
     <p>Género: {{genre}}</p>
     <p>Precio: {{price}}</p>
-    <p>Descripción: {{description}}</p>
-    <div class="youtube-player">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    {{/beat}}
-
-    <h2>Usuarios que han comprado este beat:</h2>
+    <p>Descripción: {{description}}</p><br>
+    {{#usuario}}
+    <form action="/beats/{{beat.id}}/comprar">
+        <input type="submit" value="Comprar Beat" />
+    </form>
+    {{/usuario}}
+    {{#isCurrentUser}}
+    <form action="/beat/{{beat.id}}/del" method="post" class="delete">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" id="eliminar" value="Eliminar Beat" />
+    </form>
+    <form action="/beats/{{beat.id}}/editar" method="post" class="changes">
+        <label for="price" class="lchange">Cambiar Precio:</label><br>
+        <input type="number" class="priceNumber" name="price" value="{{beat.price}}"><br>
+        <input type="submit" class="price" value="Cambiar Precio">
+    </form>
+    {{/isCurrentUser}}
+    <h2 class="buy">Usuarios que han comprado este beat:</h2>
     <ul>
     {{#users}}
         <li>
@@ -48,21 +59,10 @@
         </li>
     {{/users}}
     </ul>
-    {{#usuario}}
-    <form action="/beats/{{beat.id}}/comprar">
-        <input type="submit" value="Comprar Beat" />
-    </form>
-    {{/usuario}}
-    {{#isCurrentUser}}
-    <form action="/beat/{{beat.id}}/del" method="post">
-        <input type="hidden" name="_method" value="delete" />
-        <input type="submit" value="Eliminar Beat" />
-    </form>
-    <form action="/beats/{{beat.id}}/editar" method="post" class="cambio">
-        <label for="price">Cambiar Precio:</label><br>
-        <input type="number" id="price" name="price" value="{{beat.price}}"><br>
-        <input type="submit" value="Cambiar Precio">
-    </form>
-    {{/isCurrentUser}}
+    <div class="youtube-player">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    {{/beat}}
+    
 </body>
 </html>

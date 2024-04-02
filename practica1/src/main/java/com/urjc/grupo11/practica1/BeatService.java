@@ -27,7 +27,7 @@ public class BeatService {
         save(new Beat("SATEO", GENERO.REGGAETON, "Beat de Reggaeton y Perreo tipo DEI V", "gJ63u5CvJIA", 11.99, new HashSet<>(Arrays.asList("reggaeton", "perreo", "dei", "V","sateo", "feliz", "energico")), 3));
         save(new Beat("HACE TIEMPO", GENERO.REGGAETON, "Beat de reggaeton tipo Feid y Mora", "SgpY2dspMyY", 9.49, new HashSet<>(Arrays.asList("feid", "ferxxo", "mora", "reggaeton","tiempo", "feliz", "energico")), 3));
         // POP
-        save(new Beat("PORQUE SIN TI", GENERO.POP, "Beat de POP urbano", "9g2W9eviPBs", 10.99, new HashSet<>(Arrays.asList("pop", "porque", "sin", "ti", "urbano")), 3));
+        save(new Beat("BOUNCE", GENERO.POP, "Funk POP beat", "x8NwnnDyXPc", 6.90, new HashSet<>(Arrays.asList("pop", "funk", "chill", "happy", "disco")), 3));
         save(new Beat("VITAMIN", GENERO.POP, "Beat de POP urbano tipo POST MALONE", "AXHgacpaFyE", 16.99, new HashSet<>(Arrays.asList("pop", "urbano", "malone", "post","vitamin")), 3));
         save(new Beat("LOVERS", GENERO.POP, "Beat de POP romantico tipo IANN DIOR", "OGNWyPy_4wc", 10.99, new HashSet<>(Arrays.asList("pop", "amor", "lovers", "dior","iann", "feliz", "enamorado")), 3));
         save(new Beat("PORQUE SIN TI", GENERO.POP, "Beat de POP urbano", "9g2W9eviPBs", 10.99, new HashSet<>(Arrays.asList("pop", "porque", "ain", "ti", "urbano")), 3));

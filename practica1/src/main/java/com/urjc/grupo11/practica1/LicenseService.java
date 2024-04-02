@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
 
+// Service class for managing licenses
 @Service
 public class LicenseService {
     private ConcurrentMap<Long, License> licenses = new ConcurrentHashMap<>();
@@ -22,6 +23,7 @@ public class LicenseService {
     @Autowired
     private BeatService beatService;
 
+    // Method to initialize licenses
     @PostConstruct
     public void init(){
         User user1 = userService.findById(1L);
@@ -39,6 +41,8 @@ public class LicenseService {
             save(new License(user1.getId(), beat2.getId(), LocalDate.of(2024, 1, 8), LICENSETYPE.COMMERCIAL));
         }
     }
+
+    // Method to save a license
     public void save(License license){
         if (license.getId() == null || license.getId()==0){
             long id = nextId.getAndIncrement();
@@ -46,12 +50,18 @@ public class LicenseService {
         }
         licenses.put(license.getId(), license);
     }
+
+    // Method to retrieve all licenses
     public Collection<License> findAll(){
         return licenses.values();
     }
+
+    // Method to find a license by ID
     public License findById(Long id){
         return licenses.get(id);
     }
+
+    // Method to delete a license by ID
     public void deleteById(Long id){
         licenses.remove(id);
     }

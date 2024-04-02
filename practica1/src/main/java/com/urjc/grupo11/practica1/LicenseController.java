@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
 
+// Class for combining License and Beat
 class LicenciaYBeat {
     private License licencia;
     private Beat beat;
@@ -33,13 +34,16 @@ class LicenciaYBeat {
     }
 }
 
+// Controller class for License-related operations
 @Controller
 public class LicenseController{
 
+    // Autowired services
     @Autowired LicenseService licenses;
     @Autowired BeatService beats;
     @Autowired UserService users;
 
+    // GetMapping for retrieving all licenses
     @GetMapping("/licencias")
     public String getAllLicenses(Model model){
         List<License> l = licenses.findAll().stream().collect(Collectors.toList());
@@ -56,10 +60,13 @@ public class LicenseController{
         return "licenses";
     }
 
+    // GetMapping for buying a beat
     @GetMapping("/beats/{id}/comprar")
     public String comprarBeat(Model model, @PathVariable Long id) {
         return "comprarbeat";
     }
+
+    // PostMapping for buying a license for a beat
     @PostMapping("/beats/{id}/comprar")
     public String comprarLicencia(@PathVariable Long id, @RequestParam LICENSETYPE licenseType, HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
@@ -70,46 +77,57 @@ public class LicenseController{
         licenses.save(newLicense);
         return "redirect:/beats/" + id;
     }
+
     @GetMapping("/usuarios/{id}/licencias")
-    public String getLicenciasByUser(Model model, @PathVariable Long id){
-        List<License> licencias = licenses.findAll().stream()
-            .filter(license -> license.getUserId().equals(id))
-            .collect(Collectors.toList());
-    
-        // Crear una lista de objetos LicenciaYBeat
-        List<LicenciaYBeat> licenciasYBeats = new ArrayList<>();
-        for (License licencia : licencias) {
-            Beat beat = beats.findById(licencia.getBeatId());
-            licenciasYBeats.add(new LicenciaYBeat(licencia, beat));
+    public String getLicenciasByUser(Model model, @PathVariable Long id, HttpSession session){
+        User currentUser = (User) session.getAttribute("user");
+        if(currentUser.getId() == id){
+            List<License> licencias = licenses.findAll().stream()
+                .filter(license -> license.getUserId().equals(id))
+                .collect(Collectors.toList());
+        
+            // Crear una lista de objetos LicenciaYBeat
+            List<LicenciaYBeat> licenciasYBeats = new ArrayList<>();
+            for (License licencia : licencias) {
+                Beat beat = beats.findById(licencia.getBeatId());
+                licenciasYBeats.add(new LicenciaYBeat(licencia, beat));
+            }
+            model.addAttribute("user", currentUser);
+            model.addAttribute("licenciasYBeats", licenciasYBeats);
+            return "licenciasPorUsuario";
+        }else{
+            return "error";
         }
-    
-        model.addAttribute("licenciasYBeats", licenciasYBeats);
-        return "licenciasPorUsuario";
     }
 
+    // GetMapping for retrieving a specific license
     @GetMapping("/licencias/{id}")
     public String getLicencia(Model model, @PathVariable Long id, HttpSession session){
         License licencia = licenses.findById(id);
         Beat beat = beats.findById(licencia.getBeatId());
         User currentUser = (User) session.getAttribute("user");
+        model.addAttribute("user", currentUser);
         model.addAttribute("licencia", licencia);
         model.addAttribute("beat", beat);
         model.addAttribute("isCurrentUser", currentUser != null && currentUser.getId().equals(licencia.getUserId()));
         return "licencia";
     }
 
+    // PostMapping for editing a license
     @PostMapping("/licencias/{id}/edit")
-    public String editLicencia(@PathVariable Long id, @RequestParam LICENSETYPE licenseType, HttpSession session){
+    public String editLicencia(Model model, @PathVariable Long id, @RequestParam LICENSETYPE licenseType, HttpSession session){
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null || !currentUser.getId().equals(licenses.findById(id).getUserId())) {
             return "redirect:/login";
         }
+        
         License licencia = licenses.findById(id);
         licencia.setLicenseType(licenseType);
         licenses.save(licencia);
         return "redirect:/usuarios/" + currentUser.getId() + "/licencias";
     }
 
+    // PostMapping for deleting a license
     @PostMapping("/licencias/{id}/del")
     public String delLicencia(@PathVariable Long id, HttpSession session){
         User currentUser = (User) session.getAttribute("user");

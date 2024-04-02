@@ -29,10 +29,16 @@ public class BeatController {
     @Autowired
     UserService users;
 
+    /**
+     * Normalize a tag by converting it to lowercase and removing whitespace.
+     */
     public String normalizeTag(String tag) {
         return tag.toLowerCase().replaceAll("\\s+", "");
     }
 
+    /**
+     * Tokenize a query string into individual tags.
+     */
     public Set<String> tokenize(String query) {
         Set<String> queryTags = new HashSet<>(Arrays.asList(query.toLowerCase().split("\\s+")));
         return correctTags(queryTags.stream()
@@ -40,6 +46,9 @@ public class BeatController {
             .collect(Collectors.toSet()));
     }
 
+    /**
+     * Corrects tags by finding the closest existing tag in the system.
+     */
     public Set<String> correctTags(Set<String> queryTags) {
         Set<String> correctedTags = new HashSet<>();
         for (String queryTag : queryTags) {
@@ -49,6 +58,9 @@ public class BeatController {
         return correctedTags;
     }
 
+    /**
+     * Get all existing tags from the system.
+     */
     public Set<String> getAllExistingTags() {
         Set<String> allTags = new HashSet<>();
         for (Beat beat : beats.findAll()) {
@@ -57,6 +69,9 @@ public class BeatController {
         return allTags;
     }
 
+    /**
+     * Find the closest tag to the given query tag based on Levenshtein distance.
+     */
     public String findClosestTag(String queryTag) {
         int minDistance = Integer.MAX_VALUE;
         String closestTag = null;
@@ -70,6 +85,9 @@ public class BeatController {
         return closestTag;
     }
 
+    /**
+     * Compute the Levenshtein distance between two strings.
+     */
     public int computeLevenshteinDistance(String a, String b) {
         int[][] dp = new int[a.length() + 1][b.length() + 1];
 
@@ -88,14 +106,23 @@ public class BeatController {
         return dp[a.length()][b.length()];
     }
 
+    /**
+     * Compute the cost of substituting one character with another.
+     */
     public int costOfSubstitution(char a, char b) {
         return a == b ? 0 : 1;
     }
 
+    /**
+     * Find the minimum value among given numbers.
+     */
     public int min(int... numbers) {
         return Arrays.stream(numbers).min().orElse(Integer.MAX_VALUE);
     }
 
+    /**
+     * Find beats by tags containing the specified tag.
+     */
     public Collection<Beat> findByTagsContaining(String tag) {
         String normalizedTag = normalizeTag(tag);
         return beats.findAll().stream()
@@ -105,11 +132,15 @@ public class BeatController {
                 .contains(normalizedTag))
             .collect(Collectors.toList());
     }
+
+    /**
+     * Handle GET request for displaying beats.
+     */
     @GetMapping("/beats")
     public String getBeats(Model model, HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
-            return "iniciaOregistra"; // Retorna la vista que contiene tu HTML cuando el usuario no está autenticado
+            return "iniciaOregistra"; // Returns the view containing HTML when the user is not authenticated
         } else {
             model.addAttribute("user", currentUser);
             for (GENERO genre : GENERO.values()) {
@@ -121,6 +152,10 @@ public class BeatController {
             return "comprar";
         }
     }
+
+    /**
+     * Handle GET request for displaying licenses by beat.
+     */
     @GetMapping("/beats/{id}")
     public String getLicensesByBeat(Model model, @PathVariable Long id, HttpSession session){
         model.addAttribute("beat", beats.findById(id));
@@ -139,18 +174,33 @@ public class BeatController {
         model.addAttribute("isCurrentUser", (currentUser!= null && currentUser.getId()==beats.findById(id).getProducerID()));
         return "beat";
     }
+
+    /**
+     * Handle GET request for searching beats.
+     */
     @GetMapping("/buscar")
-    public String search(@RequestParam("q") String query, Model model) {
-        Set<String> queryTags = tokenize(query);
-        List<Beat> beatList = new ArrayList<>();
-        for (String tag : queryTags) {
-            beatList.addAll(findByTagsContaining(tag));
+    public String search(@RequestParam("q") String query, Model model, HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            return "iniciaOregistra"; // Returns the view containing HTML when the user is not authenticated
+        } else {
+            Set<String> queryTags = tokenize(query);
+            List<Beat> beatList = new ArrayList<>();
+            for (String tag : queryTags) {
+                beatList.addAll(findByTagsContaining(tag));
+            }
+            Set<Beat> returnSet = new HashSet<>(beatList);
+            model.addAttribute("user", currentUser);
+            model.addAttribute("usuario", (currentUser!= null));
+            model.addAttribute("beats", returnSet);
+            return "buscar";
         }
-        Set<Beat> returnSet = new HashSet<>(beatList);
-        model.addAttribute("beats", returnSet);
-        return "buscar";
+        
     }
 
+    /**
+     * Handle POST request for deleting a beat.
+     */
     @PostMapping("/beat/{id}/del")
     public String deleteBeat(@PathVariable Long id, HttpSession session){
         User currentUser = (User) session.getAttribute("user");
@@ -162,33 +212,50 @@ public class BeatController {
         }
     }
 
+    /**
+     * Handle GET request for displaying
+
+ the create beat form.
+     */
     @GetMapping("/vender")
     public String showCreateBeatForm(HttpSession session, Model model) {
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
-            return "iniciaOregistra"; // Retorna la vista que contiene tu HTML cuando el usuario no está autenticado
+            return "iniciaOregistra"; // Returns the view containing HTML when the user is not authenticated
         } else {
             model.addAttribute("user", session.getAttribute("user"));
             return "vender";
         }
     }
 
+    /**
+     * Handle POST request for creating a beat.
+     */
     @PostMapping("/vender")
     public String createBeat(@RequestParam String beatName, @RequestParam Double price, @RequestParam String description, @RequestParam String url, @RequestParam(required = false) List<String> mood, @RequestParam(required = false) List<String> genre, @RequestParam String tags, HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
         if(currentUser != null){
             Set<String> tagSet = new HashSet<>(Arrays.asList(tags.split("\\s+")));
+            for(String m : mood){
+                tagSet.add(m);
+            }
             Beat newBeat = new Beat(beatName, GENERO.valueOf(genre.get(0).toUpperCase()), description, url, price, tagSet, currentUser.getId());
             beats.save(newBeat);
         }
         return "redirect:/beats";
     }
 
+    /**
+     * Handle GET request for displaying the edit beat form.
+     */
     @GetMapping("/beats/{id}/editar")
     public String changePrice(@RequestParam Long id, Model model, HttpSession session) {
         return "editbeat";
     }
 
+    /**
+     * Handle POST request for updating the price of a beat.
+     */
     @PostMapping("/beats/{id}/editar")
     public String postMethodName(@RequestParam Double price, @PathVariable Long id) {
         Beat newBeat = beats.findById(id);
@@ -196,6 +263,4 @@ public class BeatController {
         beats.save(newBeat);
         return "redirect:/beats/{id}";
     }
-    
-    
 }
