@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src ="js/search_bar.js"></script>
+    <script src="js/nav_bar.js"></script>
+    <script src="js/toggle.js"></script>
+    <title>FroggyBeats | Compra y vende beats </title>
+</head>
+<body>
+    <div class="marquee">
+        <p id="textoAnimado">Bienvenido a FroggyBeats, donde tu música cobra vida. Encuentra los beats perfectos para tus proyectos y comparte tu talento con el mundo.</p>
+    </div> 
+    <div class="head">   
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="/"><img src="img/andresita_la_ranita.png"></a>
+        </div>
+        <div class="search-container head-search">
+            <form action="/buscar" method="get">
+                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+        <button class="menu-toggle"><img src="img/menu.png" ></button> 
+        <nav class="navbar">
+            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+            {{#user}}
+                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
+            {{/user}}
+            {{^user}}
+                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
+                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            {{/user}}
+        </nav>      
+    </div>
+    <div class="container">
+        <div class="search-container" id="main">
+            <h1>Encuentra tu ritmo, crea tu historia</h1>
+            <form action="/buscar" method="get">
+                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="usersInfo">
+        <h1>Mira todos los usuarios que se han unido a nuestra página!</h1>
+        <button onclick="window.location.href='/usuarios';" class="lub">Usuarios</button>
+    </div>
+    
+    <div class="licensesInfo">
+        <h1>También puedes ver quienes y que beats han comprado!</h1>
+        <button onclick="window.location.href='/licencias';" class="lub">Licencias</button>
+    </div>
+    
+    <div class="moods-container">
+        <h2>¿Cual es tu MOOD actual?</h2>
+        <div class="container_moods" id="MOODS">
+            <div class="container_mood" id="FELIZ"> <a href="/buscar?q=feliz"><img src="img/feliz-removebg-preview.png"></a><h5>Feliz</h5> </div>
+            <div class="container_mood" id="TRISTE"> <a href="/buscar?q=triste"><img src="img/triste-removebg-preview.png"></a><h5>Triste</h5></div>
+            <div class="container_mood" id="ENAMORADO"><a href="/buscar?q=enamorado"><img src="img/enamorado-removebg-preview.png"></a><h5>Enamorado</h5></div>
+            <div class="container_mood" id="ENFADADO"><a href="/buscar?q=enfadado"><img src="img/enfadado-removebg-preview.png"></a><h5>Enfadado</h5></div>
+            <div class="container_mood" id="ENERGETICO"><a href="/buscar?q=energetico"><img src="img/nose-removebg-preview.png"></a><h5>Energetico</h5></div>
+            
+        </div>
+    </div>
+</body>
+</html>

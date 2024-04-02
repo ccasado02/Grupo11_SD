@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Sign.css">
+    <title>Sign In</title>
+</head>
+<body>
+  <div class="logo">
+    <a href="/"><img src="img/andresita_la_ranita.png"></a>
+  </div>
+  <section>
+    <div class="container_SignIn" id="signinContainer">
+        <div class="back-container">
+          <a href="/"><img src="img/hacia-atras.png"></a>
+        </div>  
+        <h2>SignIn</h2>
+          <form action="/signin" class="signinForm">
+            <div class="input-info">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-info">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">SignIn</button>
+          </form>
+          {{#error}}
+          <div>{{error}}</div>
+          {{/error}}
+    </div>
+  </section>
+  <script src="js/signin.js"></script> 
+</body>
+</html>

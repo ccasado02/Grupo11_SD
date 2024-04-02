@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/usuarios.css">
+    <script src="/js/nav_bar.js"></script>
+    <script src="/js/toggle.js"></script>
+    <title>Cambiar Nombre de Usuario</title>
+</head>
+<body>
+    <div class="head">   
+        <div class="logo">
+            <span class="brand-text">FroggyBeats</span>
+            <a href="/"><img src="/img/andresita_la_ranita.png"></a>
+        </div>
+        <button class="menu-toggle"><img src="/img/menu.png" ></button> 
+        <nav class="navbar">
+            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
+            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
+            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+            {{#user}}
+                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
+            {{/user}}
+            {{^user}}
+                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
+                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            {{/user}}
+        </nav>      
+    </div>
+    <h1>Cambiar Nombre de Usuario</h1>
+    {{#error}}
+    <div>{{error}}</div>
+    {{/error}}
+    <form action="/usuarios/{{user.id}}/editname" method="post" class="form2">
+        <label for="newname">Nuevo nombre:</label><br>
+        <input type="text" class="cambio" id="newname" name="newname" value="{{user.name}}"><br>
+        <input type="submit" value="Cambiar Nombre" id="cambiar">
+    </form>
+    
+    <a class="boton" href="/usuarios/{{user.id}}">Volver al Perfil</a>
+</body>
+</html>
