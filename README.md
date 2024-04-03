@@ -12,7 +12,7 @@ la fecha de compra y el tipo de licencia.
 
 Cabe recalcar que en esta práctica _no se ha distinguido entre usuarios en la práctica_, y además que la información implementada en ella es __volátil y no persistente__ (Implementada en un _ConcurrentHashMap_)
 
-Las operaciones CRUD sobre la API REST están programadas en los controladores XAPIController, donde X es una entidad de la práctica. Además, hemos incluido una colección Postan de estas operaciones en
+Las operaciones CRUD sobre la API REST están programadas en los controladores XAPIController, donde X es una entidad de la práctica. Además, hemos incluido una colección Postman de estas operaciones en
 la carpeta raíz del proyecto /src.
 
 Las operaciones CRUD sobre formularios están repartidas de la siguiente manera:
@@ -24,9 +24,9 @@ Las operaciones CRUD sobre formularios están repartidas de la siguiente manera:
 
     Para obtener información de un usuario especifico, se puede acceder a la página de dicho usuario desde la página de todos los usuarios o desde cualquier parte si le 
     das click a tu nombre en la barra de navegación (una vez hayas iniciado sesión).
- * Update:
+  * Update:
    A todos los usuarios se les permita cambiar su nombre de usuario desde la página de su perfil.
- * Delete:
+  * Delete:
    Al igual que con la operación update, desde el perfil de usuario se puede borrar su cuenta. Esto implicaría borrar todas sus licencias asociadas y, además, se le da la opción al usuario
    de transferir todos sus beats a otro usuario de la aplicación o eliminarlos también. Esto se debe a que si no nsería imposible eliminarlos de la web, ya que no podemos distinguir entre usuarios, por lo que no
    hay un administrador que lo pudiera borrar.
