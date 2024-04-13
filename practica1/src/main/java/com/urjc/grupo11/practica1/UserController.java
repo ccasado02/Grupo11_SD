@@ -1,5 +1,6 @@
 package com.urjc.grupo11.practica1;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,7 +62,7 @@ public class UserController {
     public String updateUserName(@PathVariable Long id, @RequestParam String newname, HttpSession session, RedirectAttributes redirectAttributes){
         if (users.findByName(newname)==null){
             User currentUser = (User) session.getAttribute("user");
-            User newUser = new User(newname, currentUser.getPassword(), currentUser.getEmail());
+            User newUser = new User(newname, currentUser.getPassword(), currentUser.getEmail(), currentUser.getLicenses(), currentUser.getBeats());
             newUser.setId(currentUser.getId());
             users.save(newUser);
             session.setAttribute("user", newUser);
@@ -97,7 +98,7 @@ public class UserController {
         List<User> userList = users.findAll().stream().filter(user-> user.getId() != id).collect(Collectors.toList());
         if(currentUser != null && currentUser.getId().equals(id)){
             model.addAttribute("user", currentUser);
-            model.addAttribute("isCurrentUser", (currentUser!= null && currentUser.getId()==beats.findById(id).getProducerID()));
+            model.addAttribute("isCurrentUser", (currentUser!= null && currentUser.getId()==beats.findById(id).getProducer().getId()));
             model.addAttribute("usersList", userList); 
             return "transfer";
         } else {
@@ -116,7 +117,7 @@ public class UserController {
     
             // Delete all licenses that the selected user has bought from the deleting user
             List<License> licensesToDelete = licenses.findAll().stream()
-                .filter(license -> license.getUserId()==newOwnerId && beats.findById(license.getBeatId()).getProducerID()==id)
+                .filter(license -> license.getUser().getId()==newOwnerId && beats.findById(license.getBeat().getId()).getProducer().getId()==id)
                 .collect(Collectors.toList());
             logger.info("Licencias a eliminar: "+ licensesToDelete.size());
             for (License license : licensesToDelete) {
@@ -127,7 +128,7 @@ public class UserController {
             
             // Delete all licenses of the beats that were owned by the deleting user
             List<License> licensesOfDeletedUser = licenses.findAll().stream()
-                .filter(license -> beats.findById(license.getBeatId()).getProducerID().equals(id))
+                .filter(license -> beats.findById(license.getBeat().getId()).getProducer().getId()==id)
                 .collect(Collectors.toList());
             for (License license : licensesOfDeletedUser) {
                 logger.info("Deleting license with ID: " + license.getId());
@@ -148,7 +149,7 @@ public class UserController {
         if(currentUser != null && currentUser.getId().equals(id)){
             // Find and delete all licenses of beats produced by the current user
             List<License> licensesToDelete = licenses.findAll().stream()
-                .filter(license -> beats.findById(license.getBeatId()).getProducerID().equals(id))
+                .filter(license -> beats.findById(license.getBeat().getId()).getProducer().getId()==id)
                 .collect(Collectors.toList());
             for (License license : licensesToDelete) {
                 licenses.deleteById(license.getId());
@@ -156,7 +157,7 @@ public class UserController {
 
             // Find and delete all beats of the current user
             List<Beat> beatsToDelete = beats.findAll().stream()
-                .filter(beat -> beat.getProducerID().equals(id))
+                .filter(beat -> beat.getProducer().getId()==(id))
                 .collect(Collectors.toList());
             for (Beat beat : beatsToDelete) {
                 beats.deleteById(beat.getId());
@@ -201,10 +202,10 @@ public class UserController {
     // Method to handle user sign up
     @PostMapping("/signup")
     public String signUp(@RequestParam String username, @RequestParam String password, @RequestParam String email, RedirectAttributes redirectAttributes, HttpSession session) {
-        User newUser = new User(username, password, email);
+        User newUser = new User(username, password, email, new HashSet<>(), new HashSet<>());
         if ((users.findByName(username))!=null || (users.findByEmail(email))!=null) {
             if(users.correctEmailFormat(email)){
-                redirectAttributes.addFlashAttribute("error", "Usuario o email existentes");
+                redirectAttributes.addFlashAttribute("error", "Usuario o e mail existentes");
                 return "redirect:/registrate";
             } else {
                 redirectAttributes.addFlashAttribute("error", "Email incorrecto");

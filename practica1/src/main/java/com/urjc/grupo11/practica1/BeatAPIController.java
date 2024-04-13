@@ -100,8 +100,8 @@ public class BeatAPIController {
             if(updatedBeat.getTags() != null){
                 beat.setTags(updatedBeat.getTags());
             }
-            if(updatedBeat.getProducerID()!= null){
-                beat.setProducerID(updatedBeat.getProducerID());;
+            if(updatedBeat.getProducer()!= null){
+                beat.setProducer(updatedBeat.getProducer());;
             }
             beats.save(beat);
             return ResponseEntity.ok(beat);

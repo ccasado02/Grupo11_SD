@@ -1,46 +1,36 @@
 package com.urjc.grupo11.practica1;
 
 import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    private ConcurrentMap<Long, User> users = new ConcurrentHashMap<>();
-    private AtomicLong nextId = new AtomicLong(1);
+    @Autowired
+    private UserRepository users;
 
-    public UserService(){
-        save(new User("Pepito", "PepitoPerez512", "pepitoperez@gmail.com"));
-        save(new User("Juanito", "Juanito8080", "juanito.8080@gmail.com"));
-        save(new User("Tainy", "Tainy1234", "tainyproducer@gmail.com"));
-    }
+    public UserService(){}
 
     public void save(User user){
-        if (user.getId() == null || user.getId() == 0){
-            long id = nextId.getAndIncrement();
-            user.setId(id);
-        }
-        users.put(user.getId(), user);
+        users.save(user);
     }
 
     public Collection<User> findAll(){
-        return users.values();
+        return users.findAll();
     }
 
     public User findById(Long id){
-        return users.get(id);
+        return users.findById(id).orElse(null);
     }
 
     public void deleteById(Long id){
-        users.remove(id);
+        users.deleteById(id);
     }
 
     public User findByName(String username){
-        for (User user : users.values()) {
+        for (User user : users.findAll()) {
             if (user.getName().equals(username)) {
                 return user;
             }
@@ -49,7 +39,7 @@ public class UserService {
     }
 
     public User findByEmail(String email){
-        for (User user : users.values()) {
+        for (User user : users.findAll()) {
             if (user.getEmail().equals(email)) {
                 return user;
             }
@@ -65,7 +55,4 @@ public class UserService {
         return pat.matcher(email).matches();
     }
 
-    public Collection<User> getUsers(){
-        return users.values();
-    }
 }

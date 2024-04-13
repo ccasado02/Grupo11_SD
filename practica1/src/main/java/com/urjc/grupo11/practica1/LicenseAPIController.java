@@ -84,11 +84,11 @@ public class LicenseAPIController {
     public ResponseEntity<License> updateLicense(@PathVariable Long id, @RequestBody License updateLicense){
         License license = licenses.findById(id);
         if(license!=null){
-            if (!(updateLicense.getUserId()==null || updateLicense.getUserId()==0)){
-                license.setUserId(updateLicense.getUserId());
+            if (!(updateLicense.getUser()==null)){
+                license.setUser(updateLicense.getUser());
             }
-            if (!(updateLicense.getBeatId()==null || updateLicense.getBeatId()==0)){
-                license.setBeatId(updateLicense.getBeatId());
+            if (!(updateLicense.getBeat()==null)){
+                license.setBeat(updateLicense.getBeat());
             }
             if(updateLicense.getBuyDate() != null){
                 license.setBuyDate(updateLicense.getBuyDate());

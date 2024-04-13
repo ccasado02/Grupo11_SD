@@ -2,10 +2,14 @@ package com.urjc.grupo11.practica1;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Beat {
@@ -13,26 +17,25 @@ public class Beat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    // Identifier for the producer of the Beat
-    private Long producerID;
-    // Name of the Beat
     private String name;
-    // Genre of the Beat
     private GENERO genre;
-    // Price of the Beat
     private Double price;
-    // Description of the Beat
     private String description;
-    // URL to access the Beat
     private String url;
-    // Set of tags associated with the Beat
     private Set<String> tags;
+
+    @OneToMany(mappedBy = "beat", cascade=CascadeType.ALL, orphanRemoval = true)
+    private Set<License> licenses;
+
+    @ManyToOne
+    @JoinColumn(name = "producer_id")
+    private User producer;
 
     // Default constructor
     public Beat(){}
 
     // Constructor with parameters
-    public Beat(String name, GENERO genre, String description, String url, Double price, Set<String> tags, long producerID){
+    public Beat(String name, GENERO genre, String description, String url, Double price, Set<String> tags, User producer, Set<License> licenses){
         super();
         this.name=name;
         this.genre=genre;
@@ -40,16 +43,17 @@ public class Beat {
         this.url=url;
         this.price=price;
         this.tags = tags;
-        this.producerID = producerID;
-    }
+        this.producer = producer;
+        this.licenses=licenses;
+        }
     
-    // Getter and setter methods for producerID
-    public Long getProducerID() {
-        return this.producerID;
+    // Getter and setter methods for producer
+    public User getProducer() {
+        return this.producer;
     }
 
-    public void setProducerID(Long producerID) {
-        this.producerID = producerID;
+    public void setProducer(User producer) {
+        this.producer = producer;
     }
 
     // Getter and setter methods for id

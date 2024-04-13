@@ -6,23 +6,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class License {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long userId;
-    private Long beatId;
     private LocalDate buyDate;
     private LICENSETYPE licenseType;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "beat_id")
+    private Beat beat;
+
     public License(){}
 
-    public License(Long userId, Long beatId, LocalDate buyDate, LICENSETYPE licenseType){
+    public License(User userId, Beat beatId, LocalDate buyDate, LICENSETYPE licenseType){
         super();
-        this.userId=userId;
-        this.beatId=beatId;
+        this.user=userId;
+        this.beat=beatId;
         this.buyDate=buyDate;
         this.licenseType=licenseType;
     }
@@ -34,20 +42,20 @@ public class License {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return this.userId;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getBeatId() {
-        return this.beatId;
+    public Beat getBeat() {
+        return this.beat;
     }
 
-    public void setBeatId(Long beatId) {
-        this.beatId = beatId;
+    public void setBeat(Beat beat) {
+        this.beat = beat;
     }
 
     public LocalDate getBuyDate() {

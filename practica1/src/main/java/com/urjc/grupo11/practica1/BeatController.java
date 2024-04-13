@@ -1,5 +1,7 @@
 package com.urjc.grupo11.practica1;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,8 @@ public class BeatController {
     LicenseService licenses;
     @Autowired
     UserService users;
+
+    private Logger logger = LoggerFactory.getLogger(BeatController.class);
 
     /**
      * Normalize a tag by converting it to lowercase and removing whitespace.
@@ -158,20 +162,25 @@ public class BeatController {
      */
     @GetMapping("/beats/{id}")
     public String getLicensesByBeat(Model model, @PathVariable Long id, HttpSession session){
+        boolean b = false;
         model.addAttribute("beat", beats.findById(id));
         User currentUser = (User) session.getAttribute("user");
         List<User> u = new ArrayList<>();
         List<License> l = licenses.findAll().stream()
-            .filter(license -> license.getBeatId() == id)
+            .filter(license -> license.getBeat().getId() == id)
             .collect(Collectors.toList());
         for(License li : l){
-            u.add(users.findById(li.getUserId()));
+            u.add(li.getUser());
+            if(li.getUser().getId()==currentUser.getId()){
+                b = true;
+            }
         }
         model.addAttribute("user", currentUser);
-        model.addAttribute("usuario", (currentUser!= null && currentUser.getId()!=beats.findById(id).getProducerID() && !u.contains(currentUser)));
+        logger.info("There is an instance of the user on the list? -> {}", b);
+        model.addAttribute("usuario", (currentUser!= null && currentUser.getId()!=beats.findById(id).getProducer().getId() && !b));
         model.addAttribute("users", u);
         model.addAttribute("licenses", l);
-        model.addAttribute("isCurrentUser", (currentUser!= null && currentUser.getId()==beats.findById(id).getProducerID()));
+        model.addAttribute("isCurrentUser", (currentUser!= null && currentUser.getId()==beats.findById(id).getProducer().getId()));
         return "beat";
     }
 
@@ -204,9 +213,9 @@ public class BeatController {
     @PostMapping("/beat/{id}/del")
     public String deleteBeat(@PathVariable Long id, HttpSession session){
         User currentUser = (User) session.getAttribute("user");
-        if(beats.findById(id).getProducerID().equals(currentUser.getId())){
+        if(beats.findById(id).getProducer().equals(currentUser)){
             List<License> licensesToDelete = licenses.findAll().stream()
-                .filter(license -> license.getBeatId().equals(id))
+                .filter(license -> license.getBeat().getId().equals(id))
                 .collect(Collectors.toList());
             for (License license : licensesToDelete) {
                 licenses.deleteById(license.getId());
@@ -221,7 +230,7 @@ public class BeatController {
     /**
      * Handle GET request for displaying
 
- the create beat form.
+     the create beat form.
      */
     @GetMapping("/vender")
     public String showCreateBeatForm(HttpSession session, Model model) {
@@ -245,7 +254,7 @@ public class BeatController {
             for(String m : mood){
                 tagSet.add(m);
             }
-            Beat newBeat = new Beat(beatName, GENERO.valueOf(genre.get(0).toUpperCase()), description, url, price, tagSet, currentUser.getId());
+            Beat newBeat = new Beat(beatName, GENERO.valueOf(genre.get(0).toUpperCase()), description, url, price, tagSet, currentUser, new HashSet<>());
             beats.save(newBeat);
         }
         return "redirect:/beats";

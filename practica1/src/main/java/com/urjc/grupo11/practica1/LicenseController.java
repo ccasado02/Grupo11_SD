@@ -51,8 +51,8 @@ public class LicenseController{
         List<License> l = licenses.findAll().stream().collect(Collectors.toList());
         List<String> licenseDetails = new ArrayList<>();
         for(License li : l){
-            User user = users.findById(li.getUserId());
-            Beat beat = beats.findById(li.getBeatId());
+            User user = users.findById(li.getUser().getId());
+            Beat beat = beats.findById(li.getBeat().getId());
             if (user != null && beat != null) {
                 String detail = user.getName() + " compra " + beat.getName() + " el día " + li.getBuyDate() + " con una licencia de uso " + li.getLicenseType();
                 licenseDetails.add(detail);
@@ -75,7 +75,7 @@ public class LicenseController{
         if (currentUser == null) {
             return "redirect:/login";
         }
-        License newLicense = new License(currentUser.getId(), id, LocalDate.now(), licenseType);
+        License newLicense = new License(currentUser, beats.findById(id), LocalDate.now(), licenseType);
         licenses.save(newLicense);
         return "redirect:/beats/" + id;
     }
@@ -85,13 +85,13 @@ public class LicenseController{
         User currentUser = (User) session.getAttribute("user");
         if(currentUser.getId() == id){
             List<License> licencias = licenses.findAll().stream()
-                .filter(license -> license.getUserId().equals(id))
+                .filter(license -> license.getUser().getId()==id)
                 .collect(Collectors.toList());
         
             // Crear una lista de objetos LicenciaYBeat
             List<LicenciaYBeat> licenciasYBeats = new ArrayList<>();
             for (License licencia : licencias) {
-                Beat beat = beats.findById(licencia.getBeatId());
+                Beat beat = beats.findById(licencia.getBeat().getId());
                 licenciasYBeats.add(new LicenciaYBeat(licencia, beat));
             }
             model.addAttribute("user", currentUser);
@@ -106,12 +106,12 @@ public class LicenseController{
     @GetMapping("/licencias/{id}")
     public String getLicencia(Model model, @PathVariable Long id, HttpSession session){
         License licencia = licenses.findById(id);
-        Beat beat = beats.findById(licencia.getBeatId());
+        Beat beat = beats.findById(licencia.getBeat().getId());
         User currentUser = (User) session.getAttribute("user");
         model.addAttribute("user", currentUser);
         model.addAttribute("licencia", licencia);
         model.addAttribute("beat", beat);
-        model.addAttribute("isCurrentUser", currentUser != null && currentUser.getId().equals(licencia.getUserId()));
+        model.addAttribute("isCurrentUser", currentUser != null && currentUser.getId().equals(licencia.getUser().getId()));
         return "licencia";
     }
 
@@ -119,7 +119,7 @@ public class LicenseController{
     @PostMapping("/licencias/{id}/edit")
     public String editLicencia(Model model, @PathVariable Long id, @RequestParam LICENSETYPE licenseType, HttpSession session){
         User currentUser = (User) session.getAttribute("user");
-        if (currentUser == null || !currentUser.getId().equals(licenses.findById(id).getUserId())) {
+        if (currentUser == null || !currentUser.getId().equals(licenses.findById(id).getUser().getId())) {
             return "redirect:/login";
         }
         
@@ -133,7 +133,7 @@ public class LicenseController{
     @PostMapping("/licencias/{id}/del")
     public String delLicencia(@PathVariable Long id, HttpSession session){
         User currentUser = (User) session.getAttribute("user");
-        if (currentUser == null || !currentUser.getId().equals(licenses.findById(id).getUserId())) {
+        if (currentUser == null || !currentUser.getId().equals(licenses.findById(id).getUser().getId())) {
             return "redirect:/login";
         }
         licenses.deleteById(id);
