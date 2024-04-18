@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/usuarios.css">
-    <script src ="/js/search_bar.js"></script>
-    <script src="/js/nav_bar.js"></script>
-    <script src="/js/toggle.js"></script>
-    <title>Lista de Usuarios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>FroggyBeats | Perfil</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/owl.carousel.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/owl.theme.default.min.css"/>
+
+<!-- Font Google -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-    <div class="head">   
-        <div class="logo">
-            <span class="brand-text">FroggyBeats</span>
-            <a href="/"><img src="/img/andresita_la_ranita.png"></a>
-        </div>
-        <button class="menu-toggle"><img src="/img/menu.png" ></button> 
-        <nav class="navbar">
-            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
-            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
-            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container"> <a class="navbar-brand navbar-logo" href="#"> <img src="img/andresita_la_ranita.png" alt="logo" class="logo-1"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <span class="brand-text">FroggyBeats</span>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> <a class="nav-link" href="/" >Home</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/vender">Sell Beats</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/beats">Buy Beats</a> </li>
             {{#user}}
-                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
+            <li class="nav-item"> <a class="nav-link" href="/usuarios/{{id}}">{{name}}</a> </li>
             {{/user}}
             {{^user}}
-                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
-                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
+            <li class="nav-item"> <a class="nav-link" href="/iniciasesion">Sign In</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/registrate">Sign Up</a> </li>
             {{/user}}
-        </nav>      
+        </ul>
     </div>
+  </div>
+</nav>
+<div class="container">
     <h1>Usuarios</h1>
     {{#users}}
     <div class="usuarios">
@@ -37,5 +49,6 @@
         <p>Email: {{email}}</p>
     </div>
     {{/users}}
+</div>
 </body>
 </html>

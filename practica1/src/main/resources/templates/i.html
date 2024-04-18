@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>FroggyBeats | Compra y vende beats</title>
+<title>Elegant Template By W3 Template</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="style.css"/>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.min.css"/>
-<link rel="stylesheet" type="text/css" href="/css/owl.carousel.min.css"/>
-<link rel="stylesheet" type="text/css" href="/css/owl.theme.default.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css"/>
 
 <!-- Font Google -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
@@ -21,43 +21,36 @@
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
-    <div class="container"> <a class="navbar-brand navbar-logo" href="#"> <img src="img/andresita_la_ranita.png" alt="logo" class="logo-1"> </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <span class="brand-text">FroggyBeats</span>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"> <a class="nav-link" href="/" >Home</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/vender">Sell Beats</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/beats">Buy Beats</a> </li>
-            {{#user}}
-            <li class="nav-item"> <a class="nav-link" href="/usuarios/{{id}}">{{name}}</a> </li>
-            {{/user}}
-            {{^user}}
-            <li class="nav-item"> <a class="nav-link" href="/iniciasesion">Sign In</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/registrate">Sign Up</a> </li>
-            {{/user}}
-        </ul>
+  <div class="container"> <a class="navbar-brand navbar-logo" href="#"> <img src="images/logo-white.png" alt="logo" class="logo-1"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"> <a class="nav-link" href="" data-scroll-nav="0">Home</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="1">About</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="2">Services</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="3">Own Work</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="4">Contact</a> </li>
+      </ul>
     </div>
   </div>
 </nav>
+<!-- End Navbar --> 
+
+<!-- Banner Image -->
 
 <div class="banner text-center" data-scroll-index='0'>
   <div class="banner-overlay">
     <div class="container">
-      <h1 class="text">Find your beat, create your story</h1>
-      <div class="container_s">
-        <form action="/buscar" method="get">
-            <input type="text" class="search-box" name="q" placeholder="Search beats...">
-            <button type="submit" class="search-button">Search</button>
-        </form>
-    </div>            
+      <h1 class="text-capitalize">Best Template for Creative Business</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec justo rhoncus, pharetra dui ut, cursus turpis. Aenean tincidunt vitae ligula eget congue.</p>
+      <a href="#" class="banner-btn">Get Started</a> </div>
   </div>
 </div>
 
 <!-- End Banner Image --> 
 
 <!-- About -->
-<!--
+
 <div class="about-us section-padding" data-scroll-index='1'>
   <div class="container">
     <div class="row">
@@ -80,7 +73,7 @@
     </div>
   </div>
 </div>
--->
+
 <!-- End About --> 
 
 <!-- Services -->
@@ -88,59 +81,60 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 section-title text-center">
-        <h3>What is your actual mood ?</h3>
+        <h3>We Are Best At Our Service</h3>
+        <p>Vestibulum elementum dui tempus dolor gravida, vel mattis erat fermentum.</p>
         <span class="section-title-line"></span> </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-30">
         <div class="service-box bg-white text-center">
-          <div class="container_mood" id="FELIZ"> <a href="/buscar?q=feliz"><img src="img/feliz-removebg-preview.png"></a></div>
-          <!--<div class="icon"> <i class="fas fa-chart-lie"></i> </div>-->
+          <div class="icon"> <i class="fas fa-chart-line"></i> </div>
           <div class="icon-text">
-            <h4 class="title-box">Happy</h4>
+            <h4 class="title-box">Chart Line</h4>
+            <p>Sed malesuada, est eget condimentum iaculis, nisi ex facilisis metus.</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-30">
         <div class="service-box bg-white text-center">
-          <div class="container_mood" id="TRISTE"> <a href="/buscar?q=triste"><img src="img/triste-removebg-preview.png"></a></div>   
-          <!--<div class="icon"> <i class="fas fa-bullhorn "></i> </div>-->
+          <div class="icon"> <i class="fas fa-bullhorn "></i> </div>
           <div class="icon-text">
-            <h4 class="title-box">Sad</h4>
+            <h4 class="title-box">Quick Anouncement</h4>
+            <p>Sed malesuada, est eget condimentum iaculis, nisi ex facilisis metus.</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-30">
         <div class="service-box bg-white text-center">
-          <div class="container_mood" id="ENAMORADO"><a href="/buscar?q=enamorado"><img src="img/enamorado-removebg-preview.png"></a></div>    
-          <!--<div class="icon"> <i class="fas fa-map-marked"></i> </div>-->
+          <div class="icon"> <i class="fas fa-map-marked"></i> </div>
           <div class="icon-text">
-            <h4 class="title-box">In love</h4>
+            <h4 class="title-box">Mark Location</h4>
+            <p>Sed malesuada, est eget condimentum iaculis, nisi ex facilisis metus.</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-30">
         <div class="service-box bg-white text-center">
-          <div class="container_mood" id="ENFADADO"><a href="/buscar?q=enfadado"><img src="img/enfadado-removebg-preview.png"></a></div>
-          <!--<div class="icon"> <i class="fas fa-bug"></i> </div>-->
+          <div class="icon"> <i class="fas fa-bug"></i> </div>
           <div class="icon-text">
-            <h4 class="title-box">Angry</h4>
+            <h4 class="title-box">Bug Solution</h4>
+            <p>Sed malesuada, est eget condimentum iaculis, nisi ex facilisis metus.</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-30">
         <div class="service-box bg-white text-center">
-          <div class="container_mood" id="ENERGETICO"><a href="/buscar?q=energetico"><img src="img/nose-removebg-preview.png"></a></div>            
-          <!--<div class="icon"> <i class="fas fa-comments"></i> </div>-->
+          <div class="icon"> <i class="fas fa-comments"></i> </div>
           <div class="icon-text">
-            <h4 class="title-box">Energetic</h4>
+            <h4 class="title-box">Fast Communication</h4>
+            <p>Sed malesuada, est eget condimentum iaculis, nisi ex facilisis metus.</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-30">
         <div class="service-box bg-white text-center">
-          <div class="container_mood" id="CURIOSO"><a href="/buscar?q=energetico"><img src="img/gafas-removebg-preview.png"></a></div> 
-          <!--<div class="icon"> <i class="fas fa-paint-brush"></i> </div>-->
+          <div class="icon"> <i class="fas fa-paint-brush"></i> </div>
           <div class="icon-text">
-            <h4 class="title-box">Curious</h4>
+            <h4 class="title-box">Clean Design</h4>
+            <p>Sed malesuada, est eget condimentum iaculis, nisi ex facilisis metus.</p>
           </div>
         </div>
       </div>
@@ -148,12 +142,159 @@
   </div>
 </div>
 
-<!-- End Services--> 
+<!-- End Services --> 
 
-
+<!-- Gallery -->
+<div class="portfolio section-padding" data-scroll-index='3'>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 section-title text-center">
+        <h3>Check our recent works</h3>
+        <p>Vestibulum elementum dui tempus dolor gravida, vel mattis erat fermentum.</p>
+        <span class="section-title-line"></span> </div>
+      <div class="filtering text-center mb-30">
+        <button type="button" data-filter='*' class="active">All</button>
+        <button type="button" data-filter='.summer'>Summer</button>
+        <button type="button" data-filter='.winter'>Winter</button>
+        <button type="button" data-filter='.rainy'>Rainy</button>
+        <button type="button" data-filter='.spring'>Spring</button>
+      </div>
+      <div class="gallery no-padding col-lg-12 col-sm-12">
+        <div class="col-lg-4 col-sm-6 spring no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall1.jpg"></a>
+            <div class="part-img"> <img src="images/gall1.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Spring</h4>
+                <h6>Autumn Leaves</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 spring no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall2.jpg"></a>
+            <div class="part-img"> <img src="images/gall2.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Spring</h4>
+                <h6>Flower Pot</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 spring no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall3.jpg"></a>
+            <div class="part-img"> <img src="images/gall3.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Spring</h4>
+                <h6>Bird with Flower</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 summer no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall4.jpg"></a>
+            <div class="part-img"> <img src="images/gall4.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Summer</h4>
+                <h6>Vacation Trip Van</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 winter no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall5.jpg"></a>
+            <div class="part-img"> <img src="images/gall5.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Winter</h4>
+                <h6>Girl in the snow</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 rainy no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall6.jpg"></a>
+            <div class="part-img"> <img src="images/gall6.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Rainy</h4>
+                <h6>Man with an Umberalla</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 summer no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall7.jpg"></a>
+            <div class="part-img"> <img src="images/gall7.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Summer</h4>
+                <h6>New Beginning</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 rainy no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall8.jpg"></a>
+            <div class="part-img"> <img src="images/gall8.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Rainy</h4>
+                <h6>Girl in the Rain</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 summer no-padding">
+          <div class="item-img"> <a class="single-image" href="images/gall9.jpg"></a>
+            <div class="part-img"> <img src="images/gall9.jpg" alt="image">
+              <div class="overlay-img">
+                <h4>Summer</h4>
+                <h6>Fun at the Seashores</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Gallery -->
+<!-- Testimonials -->
+<div class="testimonials">
+  <div class="testimonials-overlay section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <div class="owl-carousel owl-theme">
+            <div class="testimonial-item text-center">
+              <div class="icon"> <i class="fas fa-comments"></i> </div>
+              <p class="m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonial-author text-center">
+                <h5>Rup Jakhar</h5>
+                <h6>Web Desinger</h6>
+              </div>
+            </div>
+            <div class="testimonial-item text-center">
+              <div class="icon"> <i class="fas fa-comments"></i> </div>
+              <p class="m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <div class="testimonial-author text-center">
+                <h5>Yogesh Singh</h5>
+                <h6>Web Desinger</h6>
+              </div>
+            </div>
+            <div class="testimonial-item text-center">
+              <div class="icon"> <i class="fas fa-comments"></i> </div>
+              <p class="m-auto">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonial-author text-center">
+                <h5>Vivek Singh</h5>
+                <h6>Web Desinger</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- End Testimonials --> 
 
-<!-- Contact 
+<!-- Contact -->
 <div class="contact section-padding" data-scroll-index='4'>
   <div class="container">
     <div class="row">
@@ -225,22 +366,18 @@
     </div>
   </div>
 </div>
--->
 <!-- End Contact -->
-
 <footer class="footer-copy">
   <div class="container-fluid">
-    <div class="end">
+    <div class="row">
       <div class="col-md-12">
-        <p>2024 &copy; FroggyBeats. Website Designed by <a href="http://w3Template.com" target="_blank" rel="dofollow">Carlos, Andrés and Lucas</a></p>
+        <p>2018 &copy; Elegant. Website Designed by <a href="http://w3Template.com" target="_blank" rel="dofollow">W3 Template</a></p>
       </div>
     </div>
   </div>
 </footer>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> 
-
 <!-- owl carousel js --> 
 <script src="js/owl.carousel.min.js"></script> 
 <!-- magnific-popup --> 
@@ -260,13 +397,13 @@
       if(bodyScroll > 130){
 
           navbar.addClass("nav-scroll");
-          $('.navbar-logo img').attr('src','img/andresita_la_ranita.png');
+          $('.navbar-logo img').attr('src','images/logo-black.png');
 
 
       }else{
 
           navbar.removeClass("nav-scroll");
-          $('.navbar-logo img').attr('src','img/andresita_la_ranita.png');
+          $('.navbar-logo img').attr('src','images/logo-white.png');
 
       }
 
@@ -282,13 +419,13 @@ navbar = $(".navbar");
 if(bodyScroll > 130){
 
 navbar.addClass("nav-scroll");
-$('.navbar-logo img').attr('src','img/andresita_la_ranita.png');
+$('.navbar-logo img').attr('src','images/logo-black.png');
 
 
 }else{
 
 navbar.removeClass("nav-scroll");
-$('.navbar-logo img').attr('src','img/andresita_la_ranita.png');
+$('.navbar-logo img').attr('src','images/logo-white.png');
 
 }
 
@@ -377,69 +514,3 @@ $( ".cover-bg" ).each(function() {
 </script>
 </body>
 </html>
-
-
-<!--
-<body>
-    <div class="marquee">
-        <p id="textoAnimado">Bienvenido a FroggyBeats, donde tu música cobra vida. Encuentra los beats perfectos para tus proyectos y comparte tu talento con el mundo.</p>
-    </div> 
-    <div class="head">   
-        <div class="logo">
-            <span class="brand-text">FroggyBeats</span>
-            <a href="/"><img src="img/andresita_la_ranita.png"></a>
-        </div>
-        <div class="search-container head-search">
-            <form action="/buscar" method="get">
-                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
-                <button type="submit" class="search-button">Buscar</button>
-            </form>
-        </div>
-        <button class="menu-toggle"><img src="img/menu.png" ></button> 
-        <nav class="navbar">
-            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
-            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
-            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
-            {{#user}}
-                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
-            {{/user}}
-            {{^user}}
-                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
-                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
-            {{/user}}
-        </nav>      
-    </div>
-    <div class="container">
-        <div class="search-container" id="main">
-            <h1>Encuentra tu ritmo, crea tu historia</h1>
-            <form action="/buscar" method="get">
-                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
-                <button type="submit" class="search-button">Buscar</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="usersInfo">
-        <h1>Mira todos los usuarios que se han unido a nuestra página!</h1>
-        <button onclick="window.location.href='/usuarios';" class="lub">Usuarios</button>
-    </div>
-    
-    <div class="licensesInfo">
-        <h1>También puedes ver quienes y que beats han comprado!</h1>
-        <button onclick="window.location.href='/licencias';" class="lub">Licencias</button>
-    </div>
-    
-    <div class="moods-container">
-        <h2>¿Cual es tu MOOD actual?</h2>
-        <div class="container_moods" id="MOODS">
-            <div class="container_mood" id="FELIZ"> <a href="/buscar?q=feliz"><img src="img/feliz-removebg-preview.png"></a><h5>Feliz</h5> </div>
-            <div class="container_mood" id="TRISTE"> <a href="/buscar?q=triste"><img src="img/triste-removebg-preview.png"></a><h5>Triste</h5></div>
-            <div class="container_mood" id="ENAMORADO"><a href="/buscar?q=enamorado"><img src="img/enamorado-removebg-preview.png"></a><h5>Enamorado</h5></div>
-            <div class="container_mood" id="ENFADADO"><a href="/buscar?q=enfadado"><img src="img/enfadado-removebg-preview.png"></a><h5>Enfadado</h5></div>
-            <div class="container_mood" id="ENERGETICO"><a href="/buscar?q=energetico"><img src="img/nose-removebg-preview.png"></a><h5>Energetico</h5></div>
-            
-        </div>
-    </div>
-</body>
-</html>
--->
