@@ -170,6 +170,42 @@ public class UserController {
         return "redirect:/";  // Redirect to home page
     }
 
+    @GetMapping("/usuarios/{id}/editprofile")
+    public String editProfile(@PathVariable Long id, HttpSession session, Model model){
+        User user = users.findById(id);
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser != null && currentUser.getId().equals(user.getId())) {
+            model.addAttribute("user", user);
+            return "editprofile";
+        } else {
+            return "redirect:/";
+        }
+    }
+
+    // Method to update user's name
+    @PostMapping("/usuarios/{id}/editprofile")
+    public String updateProfile(@PathVariable Long id, @RequestParam String newname, @RequestParam String newmail,  @RequestParam String newpass, @RequestParam String confirmpass, HttpSession session, RedirectAttributes redirectAttributes){
+        User currentUser = (User) session.getAttribute("user");
+        if (!newpass.isEmpty() && !newpass.equals(confirmpass)) {
+            redirectAttributes.addFlashAttribute("error", "Las contraseñas no coinciden");
+            return "redirect:/usuarios/{id}/editname";
+        }
+        if (!newname.isEmpty() && users.findByName(newname)==null){
+            currentUser.setName(newname);
+        }
+        if (!newmail.isEmpty() && users.findByEmail(newmail)==null){
+            currentUser.setEmail(newmail);
+        }
+        if (!newpass.isEmpty()){
+            currentUser.setPassword(newpass);
+        }
+        users.save(currentUser);
+        session.setAttribute("user", currentUser);
+        return "redirect:/usuarios/{id}";
+    }
+
+
+
     // Method to display sign in form
     @GetMapping("/iniciasesion")
     public String signInForm(){

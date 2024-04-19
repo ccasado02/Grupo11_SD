@@ -1017,4 +1017,31 @@ p{
 	background-color: #356322;
 }
 
+#editLic{
+	margin-top: 15px;
+}
+.parr{
+	margin-right: -50px;
+}
 
+#numlic{
+	color: #6ca254;
+	margin-bottom: 10px;
+	margin-top: -20px;
+}
+
+.content {
+    display: flex;
+	margin-top: 20px;
+	align-items: center;
+}
+
+.izquierda {
+    margin-right: 20px; /* Ajusta este valor según tus necesidades */
+}
+
+.names{
+	margin-top: -10px;
+	font-size: 20px;
+	color: #6ca254;
+}
