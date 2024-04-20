@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>FroggyBeats | Perfil</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/owl.carousel.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/owl.theme.default.min.css"/>
+
+<!-- Font Google -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" id="navID">
+    <div class="container"> <a class="navbar-brand navbar-logo" href="#"> <img src="/img/andresita_la_ranita.png" alt="logo" class="logo-1"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <span class="brand-text">FroggyBeats</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> <a class="nav-link" href="/" >Inicio</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/vender">Vender Beats</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/beats">Comprar Beats</a> </li>
+            {{#user}}
+            <li class="nav-item"> <a class="nav-link" href="/usuarios/{{id}}">{{name}}</a> </li>
+            {{/user}}
+            {{^user}}
+            <li class="nav-item"> <a class="nav-link" href="/iniciasesion">Iniciar sesion</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/registrate">Registrarse</a> </li>
+            {{/user}}
+        </ul>
+    </div>
+</div>
+</nav>
+<div class="userinf">
+    <div class="container">
+        <h1 class="h1class">Perfil de Usuario</h1>
+        <div>
+            <h2 class="nombre">{{usuario.name}}</h2>
+            <p>ID: {{usuario.id}}</p>
+            <p>Email: {{usuario.email}}</p>
+        </div>
+        {{#isCurrentUser}}
+        <form action="/usuarios/{{user.id}}/del" method="get">
+            <input class="bttn" type="hidden" name="_method" value="delete" />
+            <input class="bttn" type="submit" value="Eliminar Usuario" />
+        </form>
+        <a href="/usuarios/{{user.id}}/editprofile" class="bttn">Modificar Perfil de usuario</a>
+        <br>
+        <a href="/usuarios/{{user.id}}/editname" class="bttn">Cambiar Nombre de Usuario</a>
+        <br>
+        <a href="/usuarios/{{user.id}}/licencias" class="bttn">Mis Licencias</a>
+        <form action="/logout" method="post">
+            <input class="bttn" type="submit" value="Cerrar sesion" />
+        </form>
+        {{/isCurrentUser}}
+    </div>
+</div>
+</body>
+</html>
