@@ -55,12 +55,13 @@
                 <input id="trans" class="bttn" type="submit" value="Transferir Propiedad">
             </form>   
         </div>
-        <div class="form-container"></div> 
             <form action="/usuarios/{{id}}/borrar" method="post" class="formularioV">
                 <label class="brr" id="owner" for="newOwnerId">Eliminar todas las propiedades</label><br>
                 <br>
                 <input id="borrar" type="submit" class="bttnB" value="Borrar Propiedades">
-            </form>    
+            </form> 
+            <br>
+        <a class="bot" href="/usuarios/{{user.id}}">Volver al Perfil</a>   
         </div>
     </div>
 </div>

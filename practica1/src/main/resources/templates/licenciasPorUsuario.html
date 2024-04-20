@@ -50,9 +50,15 @@
                 <a id="lic"href="/licencias/{{licencia.id}}">Licencia {{licencia.id}}:  </a>    Compró licencia de tipo {{licencia.licenseType}} para el beat {{beat.name}}.
             </li>
         {{/licenciasYBeats}}
+        {{^licenciasYBeats}}
+            <li>No tienes ninguna licencia</li>
+        {{/licenciasYBeats}}
         </ul>
+        <a class="bot" href="/licencias">Ver Licencias de los demás usuarios</a>
+        <br>
         <a class="bot" href="/usuarios/{{user.id}}">Volver al Perfil</a>
     </div>
-</div>    
+</div>
+
 </body>
 </html>

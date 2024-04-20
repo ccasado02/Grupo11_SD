@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (linkPage === currentPage) {
             // Aplicar estilo al enlace de la página actual
-            link.style.color = "#fff"; // Cambiar el color del texto
-            link.style.background = "#6ca254"; // Cambiar el color de fondo
+            link.style.color = "#ccbf0a"; // Cambiar el color del texto
         }
     });
 });
