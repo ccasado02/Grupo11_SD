@@ -26,15 +26,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <span class="brand-text">FroggyBeats</span>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"> <a class="nav-link" href="/" >Home</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/vender">Sell Beats</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/beats">Buy Beats</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/" >Inicio</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/vender">Vender Beats</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/beats">Comprar Beats</a> </li>
             {{#user}}
             <li class="nav-item"> <a class="nav-link" href="/usuarios/{{id}}">{{name}}</a> </li>
             {{/user}}
             {{^user}}
-            <li class="nav-item"> <a class="nav-link" href="/iniciasesion">Sign In</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/registrate">Sign Up</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/iniciasesion">Iniciar sesion</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/registrate">Registrarse</a> </li>
             {{/user}}
         </ul>
     </div>
@@ -44,58 +44,29 @@
 <div class="banner text-center" data-scroll-index='0'>
   <div class="banner-overlay">
     <div class="container">
-      <h1 class="text">Find your beat, create your story</h1>
+      <h1 class="text">Encuentra tu ritmo, crea tu historia</h1>
       <div class="container_s">
         <form action="/buscar" method="get">
-            <input type="text" class="search-box" name="q" placeholder="Search beats...">
-            <button type="submit" class="search-button">Search</button>
+            <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
+            <button type="submit" class="search-button">Buscar</button>
         </form>
     </div>            
   </div>
 </div>
-
-<!-- End Banner Image --> 
-
-<!-- About -->
-<!--
-<div class="about-us section-padding" data-scroll-index='1'>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 section-title text-center">
-        <h3>We Are Best At Our Work</h3>
-        <p>Suspendisse fringilla eget arcu et bibendum. Vestibulum elementum dui tempus dolor gravida, vel mattis erat fermentum.</p>
-        <span class="section-title-line"></span> </div>
-      <div class="col-md-6 mb-50">
-        <div class="section-info">
-          <div class="sub-title-paragraph">
-            <h4>You can conquer the world.</h4>
-            <h5>If you have right set of mind and thus you can rule the world. Cheers!</h5>
-            <p>Nam non erat feugiat, pellentesque mi ut, finibus tellus. Ut eget ex sodales, feugiat elit non, semper ex. Sed laoreet lectus nisl, sit amet porttitor lacus porta nec. Quisque sit amet metus sagittis, tincidunt tellus in, efficitur lorem. Sed scelerisque tellus nisl, eget tincidunt elit aliquet vitae. Integer id felis ut ipsum tristique iaculis. Mauris sed nibh enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc sagittis rhoncus sollicitudin. Maecenas eget dui a neque rutrum tincidunt sed non ipsum.</p>
-          </div>
-          <a href="#" class="anchor-btn">Learn more <i class="fas fa-arrow-right pd-lt-10"></i></a> </div>
-      </div>
-      <div class="col-md-6 mb-50">
-        <div class="section-img"> <img src="images/about.jpg" alt="" class="img-responsive"/> </div>
-      </div>
-    </div>
-  </div>
-</div>
--->
-<!-- End About --> 
 
 <!-- Services -->
 <div class="services section-padding bg-grey" data-scroll-index='2'>
   <div class="container">
     <div class="row">
       <div class="col-md-12 section-title text-center">
-        <h3>What is your actual mood ?</h3>
+        <h3>¿ Cuál es tu mood actual ?</h3>
         <span class="section-title-line"></span> </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-30">
         <div class="service-box bg-white text-center">
           <div class="container_mood" id="FELIZ"> <a href="/buscar?q=feliz"><img src="img/feliz-removebg-preview.png"></a></div>
           <!--<div class="icon"> <i class="fas fa-chart-lie"></i> </div>-->
           <div class="icon-text">
-            <h4 class="title-box">Happy</h4>
+            <h4 class="title-box">Feliz</h4>
           </div>
         </div>
       </div>
@@ -104,7 +75,7 @@
           <div class="container_mood" id="TRISTE"> <a href="/buscar?q=triste"><img src="img/triste-removebg-preview.png"></a></div>   
           <!--<div class="icon"> <i class="fas fa-bullhorn "></i> </div>-->
           <div class="icon-text">
-            <h4 class="title-box">Sad</h4>
+            <h4 class="title-box">Triste</h4>
           </div>
         </div>
       </div>
@@ -113,7 +84,7 @@
           <div class="container_mood" id="ENAMORADO"><a href="/buscar?q=enamorado"><img src="img/enamorado-removebg-preview.png"></a></div>    
           <!--<div class="icon"> <i class="fas fa-map-marked"></i> </div>-->
           <div class="icon-text">
-            <h4 class="title-box">In love</h4>
+            <h4 class="title-box">Enamorado</h4>
           </div>
         </div>
       </div>
@@ -122,7 +93,7 @@
           <div class="container_mood" id="ENFADADO"><a href="/buscar?q=enfadado"><img src="img/enfadado-removebg-preview.png"></a></div>
           <!--<div class="icon"> <i class="fas fa-bug"></i> </div>-->
           <div class="icon-text">
-            <h4 class="title-box">Angry</h4>
+            <h4 class="title-box">Enfadado</h4>
           </div>
         </div>
       </div>
@@ -131,7 +102,7 @@
           <div class="container_mood" id="ENERGETICO"><a href="/buscar?q=energetico"><img src="img/nose-removebg-preview.png"></a></div>            
           <!--<div class="icon"> <i class="fas fa-comments"></i> </div>-->
           <div class="icon-text">
-            <h4 class="title-box">Energetic</h4>
+            <h4 class="title-box">Enérgico</h4>
           </div>
         </div>
       </div>
@@ -140,7 +111,7 @@
           <div class="container_mood" id="CURIOSO"><a href="/buscar?q=energetico"><img src="img/gafas-removebg-preview.png"></a></div> 
           <!--<div class="icon"> <i class="fas fa-paint-brush"></i> </div>-->
           <div class="icon-text">
-            <h4 class="title-box">Curious</h4>
+            <h4 class="title-box">Curioso</h4>
           </div>
         </div>
       </div>
@@ -148,85 +119,6 @@
   </div>
 </div>
 
-<!-- End Services--> 
-
-
-<!-- End Testimonials --> 
-
-<!-- Contact 
-<div class="contact section-padding" data-scroll-index='4'>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 section-title text-center">
-        <h3>Contact Us For More</h3>
-        <p>Vestibulum elementum dui tempus dolor gravida, vel mattis erat fermentum.</p>
-        <span class="section-title-line"></span> </div>
-      <div class="col-lg-5 col-md-4">
-        <div class="part-info">
-          <div class="info-box">
-            <div class="icon"> <i class="fas fa-phone"></i> </div>
-            <div class="content">
-              <h4>Phone :</h4>
-              <p>0123456789</p>
-            </div>
-          </div>
-          <div class="info-box">
-            <div class="icon"> <i class="fas fa-map-marker-alt"></i> </div>
-            <div class="content">
-              <h4>Address :</h4>
-              <p>New Delhi, India</p>
-            </div>
-          </div>
-          <div class="info-box">
-            <div class="icon"> <i class="fas fa-envelope"></i> </div>
-            <div class="content">
-              <h4>Mail :</h4>
-              <p><a href="#">info@123.com</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-7 col-md-8">
-        <div class="contact-form">
-          <form class='form' id='contact-form' method='post' data-toggle='validator'>
-            <input type='hidden' name='form-name' value='contact-form' />
-            <div class="messages"></div>
-            <div class="controls">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <input id="form_name" type="text" name="name" placeholder="Name *" required data-error="name is required.">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <input id="form_email" type="email" name="email" placeholder="Email *" required data-error="Valid email is required.">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="form-group">
-                    <input id="form_subject" type="text" name="subject" placeholder="Subject">
-                  </div>
-                </div>
-                <div class="col-lg-12 form-group">
-                  <textarea id="form_message" name="message" class="form-control" placeholder=" Type Your Message " rows="4" required data-error="Please,leave us a message."></textarea>
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-12 text-center">
-                  <button class="bttn">Send Message</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->
-<!-- End Contact -->
 
 <footer class="footer-copy">
   <div class="container-fluid">
@@ -378,68 +270,3 @@ $( ".cover-bg" ).each(function() {
 </body>
 </html>
 
-
-<!--
-<body>
-    <div class="marquee">
-        <p id="textoAnimado">Bienvenido a FroggyBeats, donde tu música cobra vida. Encuentra los beats perfectos para tus proyectos y comparte tu talento con el mundo.</p>
-    </div> 
-    <div class="head">   
-        <div class="logo">
-            <span class="brand-text">FroggyBeats</span>
-            <a href="/"><img src="img/andresita_la_ranita.png"></a>
-        </div>
-        <div class="search-container head-search">
-            <form action="/buscar" method="get">
-                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
-                <button type="submit" class="search-button">Buscar</button>
-            </form>
-        </div>
-        <button class="menu-toggle"><img src="img/menu.png" ></button> 
-        <nav class="navbar">
-            <a href="/" id="inicio-link" class="nav-link">Inicio</a>
-            <a href="/vender" id="VB-link" class="nav-link">Vender Beats</a>
-            <a href="/beats" id="CB-link" class="nav-link">Comprar Beats</a>
-            {{#user}}
-                <a href="/usuarios/{{id}}" class="nav-link">{{name}}</a>
-            {{/user}}
-            {{^user}}
-                <a href="/iniciasesion" id="sign-in-link" class="nav-link">Sign in</a>
-                <a href="/registrate" id="signup-in-link" class="nav-link">Sign Up</a>
-            {{/user}}
-        </nav>      
-    </div>
-    <div class="container">
-        <div class="search-container" id="main">
-            <h1>Encuentra tu ritmo, crea tu historia</h1>
-            <form action="/buscar" method="get">
-                <input type="text" class="search-box" name="q" placeholder="Buscar beats...">
-                <button type="submit" class="search-button">Buscar</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="usersInfo">
-        <h1>Mira todos los usuarios que se han unido a nuestra página!</h1>
-        <button onclick="window.location.href='/usuarios';" class="lub">Usuarios</button>
-    </div>
-    
-    <div class="licensesInfo">
-        <h1>También puedes ver quienes y que beats han comprado!</h1>
-        <button onclick="window.location.href='/licencias';" class="lub">Licencias</button>
-    </div>
-    
-    <div class="moods-container">
-        <h2>¿Cual es tu MOOD actual?</h2>
-        <div class="container_moods" id="MOODS">
-            <div class="container_mood" id="FELIZ"> <a href="/buscar?q=feliz"><img src="img/feliz-removebg-preview.png"></a><h5>Feliz</h5> </div>
-            <div class="container_mood" id="TRISTE"> <a href="/buscar?q=triste"><img src="img/triste-removebg-preview.png"></a><h5>Triste</h5></div>
-            <div class="container_mood" id="ENAMORADO"><a href="/buscar?q=enamorado"><img src="img/enamorado-removebg-preview.png"></a><h5>Enamorado</h5></div>
-            <div class="container_mood" id="ENFADADO"><a href="/buscar?q=enfadado"><img src="img/enfadado-removebg-preview.png"></a><h5>Enfadado</h5></div>
-            <div class="container_mood" id="ENERGETICO"><a href="/buscar?q=energetico"><img src="img/nose-removebg-preview.png"></a><h5>Energetico</h5></div>
-            
-        </div>
-    </div>
-</body>
-</html>
--->

@@ -26,16 +26,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <span class="brand-text">FroggyBeats</span>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"> <a class="nav-link" href="/" >Home</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/vender">Sell Beats</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/beats">Buy Beats</a> </li>
-            {{#user}}
-            <li class="nav-item"> <a class="nav-link" href="/usuarios/{{id}}">{{name}}</a> </li>
-            {{/user}}
-            {{^user}}
-            <li class="nav-item"> <a class="nav-link" href="/iniciasesion">Sign In</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/registrate">Sign Up</a> </li>
-            {{/user}}
+            <li class="nav-item"> <a class="nav-link" href="/" >Inicio</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="/vender">Vender Beats</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="/beats">Comprar Beats</a> </li>
+                    {{#user}}
+                    <li class="nav-item"> <a class="nav-link" href="/usuarios/{{id}}">{{name}}</a> </li>
+                    {{/user}}
+                    {{^user}}
+                    <li class="nav-item"> <a class="nav-link" href="/iniciasesion">Iniciar sesion</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="/registrate">Registrarse</a> </li>
+                    {{/user}}
         </ul>
     </div>
   </div>
@@ -43,8 +43,8 @@
     <div class="log">
         <h3 class="sign">Para vender o comprar beats necesitas tener una cuenta</h3>
         <div class="container_sign">
-            <a href="/iniciasesion" id="sign-in-link" class="bttn2">Sign in</a>
-            <a href="/registrate" id="signup-link" class="bttn2">Sign Up</a>
+            <a href="/iniciasesion" id="sign-in-link" class="bttn2">Inicia Sesión</a>
+            <a href="/registrate" id="signup-link" class="bttn2">Regístrate</a>
         </div>
     </div>
 </body>

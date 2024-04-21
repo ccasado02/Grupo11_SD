@@ -216,8 +216,7 @@ h6 {
 .no-padding {
 	padding: 0px !important;
 }
-.sub-title-paragraph {
-}
+
 .sub-title-paragraph h4 {
 	margin-bottom: 5px;
 }
@@ -249,14 +248,12 @@ h6 {
 	-webkit-box-shadow: 0px 5px 35px 0px rgba(148, 146, 245, 0.15);
 	box-shadow: 0px 5px 35px 0px rgba(148, 146, 245, 0.15);
 }
-.service-box .icon {
-}
+
 .service-box .icon i {
 	font-size: 40px;
 	color: #ffaf53;
 }
-.icon-text {
-}
+
 .icon-text h4 {
 	font-size: 16px;
 	font-weight: 600;
