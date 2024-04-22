@@ -125,15 +125,6 @@ public class UserController {
             }
     
             beats.transferBeats(id, newOwnerId);
-            
-            // Delete all licenses of the beats that were owned by the deleting user
-            List<License> licensesOfDeletedUser = licenses.findAll().stream()
-                .filter(license -> beats.findById(license.getBeat().getId()).getProducer().getId()==id)
-                .collect(Collectors.toList());
-            for (License license : licensesOfDeletedUser) {
-                logger.info("Deleting license with ID: " + license.getId());
-                licenses.deleteById(license.getId());
-            }
 
             // Transfer all beats from the deleting user to the selected user
             logout(session);
@@ -147,22 +138,6 @@ public class UserController {
     public String deleteProperty(@PathVariable Long id, HttpSession session){
         User currentUser = (User) session.getAttribute("user");
         if(currentUser != null && currentUser.getId().equals(id)){
-            // Find and delete all licenses of beats produced by the current user
-            List<License> licensesToDelete = licenses.findAll().stream()
-                .filter(license -> beats.findById(license.getBeat().getId()).getProducer().getId()==id)
-                .collect(Collectors.toList());
-            for (License license : licensesToDelete) {
-                licenses.deleteById(license.getId());
-            }
-
-            // Find and delete all beats of the current user
-            List<Beat> beatsToDelete = beats.findAll().stream()
-                .filter(beat -> beat.getProducer().getId()==(id))
-                .collect(Collectors.toList());
-            for (Beat beat : beatsToDelete) {
-                beats.deleteById(beat.getId());
-            }
-
             // Invalidate session and delete user
             logout(session);
             users.deleteById(id);

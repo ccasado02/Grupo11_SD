@@ -213,13 +213,7 @@ public class BeatController {
     @PostMapping("/beat/{id}/del")
     public String deleteBeat(@PathVariable Long id, HttpSession session){
         User currentUser = (User) session.getAttribute("user");
-        if(beats.findById(id).getProducer().equals(currentUser)){
-            List<License> licensesToDelete = licenses.findAll().stream()
-                .filter(license -> license.getBeat().getId().equals(id))
-                .collect(Collectors.toList());
-            for (License license : licensesToDelete) {
-                licenses.deleteById(license.getId());
-            }
+        if(beats.findById(id).getProducer().getId()==currentUser.getId()){
             beats.deleteById(id);
             return "redirect:/beats";
         }else{
